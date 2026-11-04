@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TANGKAP BANGUN DATAR - Game Edukasi Interaktif</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+    <!-- MediaPipe Libraries for Hand Tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            font-family: 'Fredoka', 'Nunito', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body {
+            background-color: #050714;
+            overflow: hidden;
+        }
+
+        #video-feed {
+            transform: scaleX(-1);
+            display: none;
+        }
+
+        /* Kid-Friendly Glassmorphism Cards */
+        .glass-card {
+            background: rgba(23, 32, 54, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-pill {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.18);
+        }
+
+        /* Playful 3D Pushable Buttons */
+        .btn-3d-green {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            box-shadow: 0 8px 0 #15803d, 0 15px 25px rgba(34, 197, 94, 0.4);
+            color: #052e16;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        .btn-3d-green:active {
+            transform: translateY(6px) !important;
+            box-shadow: 0 2px 0 #15803d, 0 5px 10px rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-3d-yellow {
+            background: linear-gradient(135deg, #fde047, #eab308);
+            box-shadow: 0 8px 0 #a16207, 0 15px 25px rgba(234, 179, 8, 0.4);
+            color: #422006;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        .btn-3d-yellow:active {
+            transform: translateY(6px) !important;
+            box-shadow: 0 2px 0 #a16207, 0 5px 10px rgba(234, 179, 8, 0.4);
+        }
+
+        .btn-3d-blue {
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            box-shadow: 0 8px 0 #0369a1, 0 15px 25px rgba(56, 189, 248, 0.4);
+            color: #082f49;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+        .btn-3d-blue:active {
+            transform: translateY(6px) !important;
+            box-shadow: 0 2px 0 #0369a1, 0 5px 10px rgba(56, 189, 248, 0.4);
+        }
+
+        /* Floating & Glowing Animations */
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) rotate(-1deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float {
+            animation: float-gentle 3.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-mission {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.6)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.9)); }
+        }
+        .animate-mission {
+            animation: pulse-mission 2s ease-in-out infinite;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 9999px; }
+    </style>
+</head>
+<body class="w-screen h-screen relative flex items-center justify-center text-white select-none">
+
+    <!-- Video Feed Hidden (MediaPipe Source) -->
+    <video id="video-feed" playsinline></video>
+
+    <!-- Canvas Utama Rendering Game -->
+    <canvas id="game-canvas" class="absolute inset-0 w-full h-full object-cover z-0"></canvas>
+
+    <!-- ==================================================================== -->
+    <!-- SCREEN 1: HALAMAN PEMBUKA / SPLASH SCREEN                            -->
+    <!-- ==================================================================== -->
+    <div id="screen-splash" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 overflow-y-auto">
+        <div class="max-w-2xl w-full glass-card p-6 md:p-10 rounded-[40px] text-center relative flex flex-col items-center m-auto">
+            
+            <!-- Floating Ambient Lights -->
+            <div class="absolute -top-12 -left-12 w-40 h-40 bg-yellow-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -right-12 w-40 h-40 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <!-- 1.1 Header Logos: Pemkab Wonogiri (Kiri) & PGRI (Kanan) -->
+            <div class="flex items-center justify-center gap-3 sm:gap-4 mb-4 flex-wrap">
+                <div class="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-full border border-cyan-400/40 shadow">
+                    <!-- Logo Resmi Pemkab Wonogiri -->
+                    <img src="https://lh3.googleusercontent.com/d/18U8bEw_DS0oUYIduh4gtdXq8TAR75irp" alt="Logo Pemkab Wonogiri" class="w-7 h-7 object-contain drop-shadow" onerror="this.onerror=null; this.src='https://drive.google.com/uc?export=view&id=18U8bEw_DS0oUYIduh4gtdXq8TAR75irp';" />
+                    <span class="text-xs font-extrabold text-cyan-300">PEMERINTAH KABUPATEN WONOGIRI</span>
+                </div>
+
+                <div class="flex items-center gap-2 bg-slate-900/90 px-3.5 py-1.5 rounded-full border border-amber-400/40 shadow">
+                    <!-- Logo Resmi PGRI PNG -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Persatuan_Guru_Republik_Indonesia.png" alt="Logo PGRI" class="w-7 h-7 object-contain drop-shadow" />
+                    <span class="text-xs font-extrabold text-amber-300">PGRI KABUPATEN WONOGIRI</span>
+                </div>
+            </div>
+
+            <!-- 1.2 Judul Game Enerjik -->
+            <div class="animate-float my-2">
+                <span class="inline-block px-4 py-1 bg-amber-400/20 text-amber-300 rounded-full text-xs font-black uppercase tracking-wider mb-2 border border-amber-400/30">
+                    ✨ GAME WEBCAM HAND-TRACKING ✨
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-orange-500 drop-shadow-lg tracking-tight">
+                    TANGKAP BANGUN DATAR!
+                </h1>
+            </div>
+
+            <!-- 1.3 Identitas Pembuat -->
+            <div class="my-4 px-4 py-2 bg-slate-900/80 rounded-2xl border border-slate-700/80 inline-flex items-center gap-2">
+                <span class="text-xl">👨‍🏫</span>
+                <span class="text-xs font-bold text-slate-300">Karya: <b class="text-amber-400">IKHSAN ABDUL LATIF</b> | SD Negeri 2 Gebang | PGRI Cabang Nguntoronadi</span>
+            </div>
+
+            <!-- 1.4 Tombol Utama Super Besar (Pill Buttons) -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md mt-4">
+                <button id="btn-play-now" class="btn-3d-green flex-1 py-4 px-8 rounded-full text-2xl font-black transition-all hover:scale-105 flex items-center justify-center gap-3">
+                    <span>🎮</span> MULAI BERSAMA
+                </button>
+                <button id="btn-open-guide" class="btn-3d-yellow py-4 px-8 rounded-full text-lg font-black transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <span>📖</span> PETUNJUK & CARA MAIN
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- SCREEN 2: HALAMAN EDUKASI & PENGATURAN                               -->
+    <!-- ==================================================================== -->
+    <div id="screen-education" class="absolute inset-0 z-20 hidden flex-col items-center justify-center bg-slate-950/90 backdrop-blur-md p-4 overflow-y-auto">
+        <div class="max-w-2xl w-full glass-card p-6 sm:p-8 rounded-[40px] relative m-auto">
+            
+            <!-- Header Modal -->
+            <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-700/80">
+                <h2 class="text-2xl sm:text-3xl font-black text-amber-400 flex items-center gap-2">
+                    <span>📘</span> PETUNJUK & PENGATURAN
+                </h2>
+                <button id="btn-close-guide" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold flex items-center justify-center text-lg border border-slate-600 transition">✕</button>
+            </div>
+
+            <!-- 3 Kartu Visual Ringkas -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-900/90 p-4 rounded-3xl border-2 border-cyan-400/30 text-center flex flex-col items-center">
+                    <span class="text-4xl mb-2">🖐️</span>
+                    <h3 class="font-black text-sm text-cyan-300 mb-1">TANGKAP BENTUK</h3>
+                    <p class="text-[11px] text-slate-300 font-semibold leading-tight">Gunakan tangan di depan kamera atau sentuh layar!</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-900/90 p-4 rounded-3xl border-2 border-amber-400/30 text-center flex flex-col items-center">
+                    <span class="text-4xl mb-2">🎯</span>
+                    <h3 class="font-black text-sm text-amber-300 mb-1">IKUTI MISI</h3>
+                    <p class="text-[11px] text-slate-300 font-semibold leading-tight">Tangkap bentuk sesuai instruksi target di atas layar!</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-900/90 p-4 rounded-3xl border-2 border-rose-400/30 text-center flex flex-col items-center">
+                    <span class="text-4xl mb-2">⚠️</span>
+                    <h3 class="font-black text-sm text-rose-300 mb-1">HATI-HATI</h3>
+                    <p class="text-[11px] text-slate-300 font-semibold leading-tight">Salah tangkap mengurangi skor atau nyawa!</p>
+                </div>
+            </div>
+
+            <!-- 2.1 Narasi Voice Over Instruksi Edukasi -->
+            <button id="btn-read-instructions" class="btn-3d-blue w-full py-3.5 px-6 rounded-full text-sm sm:text-base font-black mb-6 transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg">
+                <span>🔊</span> DENGARKAN INSTRUKSI SUARA (VOICE OVER)
+            </button>
+
+            <!-- Pilihan Tingkat Kesulitan -->
+            <div class="mb-6">
+                <label class="block text-xs font-black text-amber-300 uppercase tracking-wider mb-2 text-center">PILIH TINGKAT KESULITAN:</label>
+                <div class="grid grid-cols-3 gap-3">
+                    <button type="button" data-diff="easy" class="btn-diff p-3 rounded-2xl bg-slate-900 border-4 border-slate-700 hover:border-emerald-400 text-center transition">
+                        <span class="text-2xl block mb-1">🟢</span>
+                        <span class="font-black text-xs block text-white">MUDAH</span>
+                        <span class="text-[10px] font-bold text-slate-400 block">Pelan • 5 Nyawa</span>
+                    </button>
+
+                    <button type="button" data-diff="medium" class="btn-diff p-3 rounded-2xl bg-slate-900 border-4 border-amber-400 text-center transition ring-2 ring-amber-400/50">
+                        <span class="text-2xl block mb-1">🟡</span>
+                        <span class="font-black text-xs block text-white">SEDANG</span>
+                        <span class="text-[10px] font-bold text-slate-400 block">Normal • 3 Nyawa</span>
+                    </button>
+
+                    <button type="button" data-diff="hard" class="btn-diff p-3 rounded-2xl bg-slate-900 border-4 border-slate-700 hover:border-purple-400 text-center transition">
+                        <span class="text-2xl block mb-1">🔴</span>
+                        <span class="font-black text-xs block text-white">TANTANGAN</span>
+                        <span class="text-[10px] font-bold text-slate-400 block">Cepat • 3 Nyawa</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Launch Buttons -->
+            <div class="flex flex-col gap-3">
+                <button id="btn-start-camera" class="btn-3d-green w-full py-4 rounded-full text-xl font-black transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <span>🚀</span> AKTIFKAN KAMERA & MAIN
+                </button>
+                <button id="btn-start-mouse" class="py-3 px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-full text-xs border border-slate-600 transition text-center">
+                    🖱️ Mode Touch Screen / Mouse (Tanpa Kamera)
+                </button>
+            </div>
+            
+            <!-- Box Diagnostic & Status Kamera -->
+            <div id="camera-status-box" class="mt-3 hidden p-4 rounded-2xl bg-slate-900/95 border border-slate-700 text-center shadow-xl">
+                <p id="tracker-loading-text" class="text-xs text-amber-300 animate-pulse font-bold">🔍 Menyiapkan Kamera & AI Tracking Tangan...</p>
+                <div id="camera-error-msg" class="hidden text-xs text-rose-300 font-bold my-1 leading-relaxed text-left bg-rose-950/50 p-3 rounded-xl border border-rose-500/30"></div>
+                <div class="flex flex-col sm:flex-row gap-2 mt-2 justify-center">
+                    <button id="btn-retry-camera" class="hidden px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-full text-xs transition inline-flex items-center justify-center gap-1">
+                        🔄 Coba Lagi Akses Kamera
+                    </button>
+                    <button id="btn-fallback-touch" class="hidden px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white font-black rounded-full text-xs transition inline-flex items-center justify-center gap-1">
+                        👉 Lanjut Mode Sentuh Layar
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- SCREEN 3: GAMEPLAY UI / HUD                                          -->
+    <!-- ==================================================================== -->
+    <div id="screen-gameplay" class="absolute inset-0 z-10 pointer-events-none hidden flex-col justify-between p-4 sm:p-6">
+        
+        <!-- TOP HUD BAR -->
+        <header class="w-full max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2 pointer-events-auto">
+            
+            <!-- Skor & Nyawa -->
+            <div class="flex items-center gap-2">
+                <div class="bg-amber-400 text-slate-950 px-4 py-2 rounded-full font-black flex items-center gap-2 shadow-lg text-lg sm:text-xl border-2 border-white">
+                    <span>🏆</span> <span id="hud-score" class="font-mono text-2xl">0</span>
+                </div>
+                <div class="glass-pill px-3 py-2 rounded-full flex items-center gap-1 shadow">
+                    <div id="hud-lives" class="flex gap-1 text-lg sm:text-xl">
+                        <span>❤️</span><span>❤️</span><span>❤️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARGET MISI UTAMA (CENTER BADGE) -->
+            <div id="hud-mission-badge" class="glass-card px-5 py-2.5 rounded-full border-4 border-yellow-400 animate-mission flex items-center gap-3 shadow-2xl">
+                <span class="text-2xl sm:text-3xl">🎯</span>
+                <div>
+                    <div class="text-[9px] uppercase font-black tracking-wider text-yellow-300">TARGET MISI:</div>
+                    <div id="hud-mission-title" class="text-base sm:text-xl font-black text-white">TANGKAP SEGITIGA</div>
+                </div>
+                <span id="hud-mission-count" class="bg-yellow-400 text-slate-950 font-black px-2.5 py-0.5 rounded-full text-sm">0/3</span>
+            </div>
+
+            <!-- Waktu & Quick Controls -->
+            <div class="flex items-center gap-2">
+                <div class="bg-cyan-500 text-slate-950 px-4 py-2 rounded-full font-black flex items-center gap-1.5 shadow-lg text-lg sm:text-xl border-2 border-white">
+                    <span>⏱️</span> <span id="hud-timer" class="font-mono text-2xl">60</span>
+                </div>
+                <button id="btn-toggle-sound" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">🔊</button>
+                <button id="btn-pause" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">⏸️</button>
+            </div>
+        </header>
+
+        <!-- Tracking Status Badge -->
+        <div class="w-full flex justify-center">
+            <div class="glass-pill px-4 py-1 rounded-full text-xs font-bold text-emerald-300 flex items-center gap-2 border border-emerald-400/40">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span id="hud-tracking-text">Arahkan Telapak Tangan ke Kamera</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAUSE MODAL -->
+    <div id="modal-pause" class="absolute inset-0 z-30 hidden flex-col items-center justify-center bg-slate-950/80 backdrop-blur-md p-4">
+        <div class="max-w-xs w-full glass-card p-6 rounded-[35px] text-center border-amber-400/40 shadow-2xl">
+            <span class="text-5xl mb-2 inline-block">⏸️</span>
+            <h3 class="text-2xl font-black text-amber-400 mb-4">PERMAINAN DIJEDA</h3>
+            <div class="space-y-3">
+                <button id="btn-resume" class="btn-3d-green w-full py-3.5 rounded-full text-lg font-black">▶️ LANJUTKAN</button>
+                <button id="btn-quit" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold rounded-full text-xs border border-slate-600">🏠 HALAMAN UTAMA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- SCREEN 4: GAME OVER / VICTORY MODAL                                  -->
+    <!-- ==================================================================== -->
+    <div id="screen-results" class="absolute inset-0 z-20 hidden flex-col items-center justify-center bg-slate-950/90 backdrop-blur-lg p-4 overflow-y-auto">
+        <div class="max-w-md w-full glass-card p-6 sm:p-8 rounded-[40px] text-center relative my-auto">
+            
+            <div class="text-6xl mb-2 animate-bounce">🏆</div>
+            <h2 class="text-3xl font-black text-amber-400 mb-1">PERMAINAN SELESAI!</h2>
+            
+            <!-- Rating Bintang -->
+            <div id="res-stars" class="flex justify-center gap-2 text-4xl my-2">
+                <span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+
+            <!-- Big Score Display -->
+            <div class="bg-slate-900/90 py-3 px-6 rounded-3xl border-2 border-amber-400/40 my-3 inline-block w-full">
+                <span class="text-xs uppercase font-black text-slate-400 block mb-0.5">SKOR AKHIR KAMU:</span>
+                <span id="res-final-score" class="text-5xl font-black text-amber-400 font-mono">0</span>
+            </div>
+
+            <!-- Ringkasan Statistik Evaluasi -->
+            <div class="grid grid-cols-3 gap-2 my-3 text-center">
+                <div class="bg-slate-900/80 p-2.5 rounded-2xl border border-emerald-400/30">
+                    <span class="text-xs text-slate-400 font-bold block">BENAR</span>
+                    <span id="res-stat-correct" class="text-xl font-black text-emerald-400 font-mono">0</span>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-2xl border border-rose-400/30">
+                    <span class="text-xs text-slate-400 font-bold block">SALAH</span>
+                    <span id="res-stat-wrong" class="text-xl font-black text-rose-400 font-mono">0</span>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-2xl border border-cyan-400/30">
+                    <span class="text-xs text-slate-400 font-bold block">AKURASI</span>
+                    <span id="res-stat-accuracy" class="text-xl font-black text-cyan-400 font-mono">0%</span>
+                </div>
+            </div>
+
+            <!-- Performance Badge -->
+            <p id="res-badge-text" class="text-xs sm:text-sm font-bold text-emerald-300 mb-5 bg-emerald-500/20 py-2 px-4 rounded-full border border-emerald-400/30">
+                Hebat! Kamu Sangat Mengenal Bangun Datar! 🎉
+            </p>
+
+            <!-- 2 Huge Action Buttons -->
+            <div class="flex flex-col gap-3">
+                <button id="btn-restart" class="btn-3d-green w-full py-4 rounded-full text-xl font-black transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <span>🔄</span> MAIN LAGI
+                </button>
+                <button id="btn-home" class="btn-3d-blue w-full py-3.5 rounded-full text-base font-black transition-all hover:scale-105 flex items-center justify-center gap-2">
+                    <span>🏠</span> HALAMAN UTAMA
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==================================================================== -->
+    <!-- SCRIPT UTAMA PERMAINAN & LOGIKA GAME                                 -->
+    <!-- ==================================================================== -->
+    <script>
+        /**
+         * GAME WEBCAM TANGKAP BANGUN DATAR
+         * Developed by: IKHSAN ABDUL LATIF | SD Negeri 2 Gebang | PGRI Cabang Nguntoronadi
+         */
+
+        // --- 1. WEB AUDIO API & VOICE OVER ENGINE (WEB SPEECH API id-ID) ---
+        class WebAudioEngine {
+            constructor() {
+                this.ctx = null;
+                this.isMuted = false;
+            }
+
+            init() {
+                if (!this.ctx) {
+                    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                    this.ctx = new AudioCtx();
+                }
+                if (this.ctx.state === 'suspended') {
+                    this.ctx.resume();
+                }
+            }
+
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                if (this.isMuted && voice) {
+                    voice.stop();
+                }
+                return this.isMuted;
+            }
+
+            playClick() {
+                if (this.isMuted || !this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.05);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.05);
+            }
+
+            playCatchPop() {
+                if (this.isMuted || !this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(520, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1100, this.ctx.currentTime + 0.12);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.12);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.12);
+            }
+
+            playError() {
+                if (this.isMuted || !this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(180, this.ctx.currentTime);
+                osc.frequency.linearRampToValueAtTime(100, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(); osc.stop(this.ctx.currentTime + 0.2);
+            }
+
+            playFanfare() {
+                if (this.isMuted || !this.ctx) return;
+                const notes = [523.25, 659.25, 783.99, 1046.50];
+                notes.forEach((freq, i) => {
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, this.ctx.currentTime + i * 0.08);
+                    gain.gain.setValueAtTime(0.2, this.ctx.currentTime + i * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + i * 0.08 + 0.25);
+                    osc.connect(gain); gain.connect(this.ctx.destination);
+                    osc.start(this.ctx.currentTime + i * 0.08);
+                    osc.stop(this.ctx.currentTime + i * 0.08 + 0.25);
+                });
+            }
+        }
+
+        class VoiceOverEngine {
+            constructor() {
+                this.synth = null;
+                this.voice = null;
+                try {
+                    if ('speechSynthesis' in window) {
+                        this.synth = window.speechSynthesis;
+                        this.initVoice();
+                        if (this.synth && this.synth.onvoiceschanged !== undefined) {
+                            this.synth.onvoiceschanged = () => this.initVoice();
+                        }
+                    }
+                } catch (e) {
+                    console.warn("SpeechSynthesis init warning:", e);
+                }
+            }
+
+            initVoice() {
+                if (!this.synth) return;
+                try {
+                    const voices = this.synth.getVoices();
+                    if (voices && voices.length > 0) {
+                        this.voice = voices.find(v => v.lang && (v.lang.includes('id') || v.lang.includes('ID'))) || null;
+                    }
+                } catch (e) {
+                    console.warn("initVoice error:", e);
+                }
+            }
+
+            speak(text, interrupt = true) {
+                if (!this.synth || audio.isMuted) return;
+                try {
+                    if (interrupt) {
+                        this.synth.cancel();
+                    }
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'id-ID';
+                    utterance.rate = 1.0;
+                    utterance.pitch = 1.1;
+                    if (this.voice) utterance.voice = this.voice;
+                    this.synth.speak(utterance);
+                } catch (e) {
+                    console.warn("Speak error:", e);
+                }
+            }
+
+            stop() {
+                if (this.synth) {
+                    try { this.synth.cancel(); } catch (e) {}
+                }
+            }
+        }
+
+        let audio, voice;
+        try {
+            audio = new WebAudioEngine();
+        } catch (e) {
+            console.warn("WebAudioEngine init failed:", e);
+            audio = { init: () => {}, toggleMute: () => false, playClick: () => {}, playCatchPop: () => {}, playError: () => {}, playFanfare: () => {}, isMuted: false };
+        }
+
+        try {
+            voice = new VoiceOverEngine();
+        } catch (e) {
+            console.warn("VoiceOverEngine init failed:", e);
+            voice = { speak: () => {}, stop: () => {} };
+        }
+
+        const PRAISE_PHRASES = ["Bagus!", "Hebat!", "Pintar!", "Luar biasa!", "Keren!"];
+        const WARNING_PHRASES = ["Awas, salah bentuk!", "Hati-hati!", "Bukan yang itu!"];
+
+        // --- 2. KATALOG GEOMETRI ---
+        const SHAPES = {
+            SEGITIGA: { name: "SEGITIGA", points: 10, color: "#f59e0b", sub: ["SEGITIGA"] },
+            SEGIEMPAT: { name: "SEGIEMPAT", points: 15, color: "#38bdf8", sub: ["PERSEGI", "PERSEGI PANJANG", "TRAPESIUM"] },
+            SEGIBANYAK: { name: "SEGI BANYAK", points: 25, color: "#a855f7", sub: ["SEGILIMA", "SEGIENAM", "SEGIDELAPAN"] },
+            LINGKARAN: { name: "LINGKARAN", points: 20, color: "#4ade80", sub: ["LINGKARAN"] }
+        };
+        const SHAPE_KEYS = Object.keys(SHAPES);
+
+        const CONFIG = {
+            easy: { speedMin: 1.5, speedMax: 2.5, timeLimit: 90, maxLives: 5, penalty: 0 },
+            medium: { speedMin: 2.3, speedMax: 3.8, timeLimit: 60, maxLives: 3, penalty: 10 },
+            hard: { speedMin: 3.5, speedMax: 5.5, timeLimit: 45, maxLives: 3, penalty: 15 }
+        };
+
+        // --- 3. STATE ---
+        const state = {
+            screen: 'splash',
+            difficulty: 'medium',
+            isPlaying: false,
+            isPaused: false,
+            score: 0,
+            lives: 3,
+            timer: 60,
+            timerTimer: null,
+            spawnTimer: null,
+            shapes: [],
+            particles: [],
+            texts: [],
+            handCursors: [],
+            useMouse: false,
+            mousePos: { x: -1000, y: -1000 },
+            missionCat: null,
+            missionProgress: 0,
+            missionTarget: 3,
+            correctCatches: 0,
+            wrongCatches: 0
+        };
+
+        // --- 4. CANVAS RESPONSIVE SETUP ---
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        const videoElement = document.getElementById('video-feed');
+
+        // --- 150 TWINKLING STARS & COSMIC NEBULA ENGINE ---
+        const stars = [];
+        function initStars() {
+            stars.length = 0;
+            for (let i = 0; i < 150; i++) {
+                stars.push({
+                    x: Math.random() * (canvas.width || window.innerWidth),
+                    y: Math.random() * (canvas.height || window.innerHeight),
+                    size: Math.random() * 2.2 + 0.6,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.02 + 0.005,
+                    color: ['#ffffff', '#bae6fd', '#fef08a', '#e0e7ff', '#f472b6', '#a7f3d0'][Math.floor(Math.random() * 6)]
+                });
+            }
+        }
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initStars();
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function drawNebula(ctx) {
+            // Latar Hitam Luar Angkasa
+            ctx.fillStyle = '#050714';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.globalCompositeOperation = 'screen';
+
+            // Nebula 1: Ungu / Magenta Kosmik (Kiri Atas)
+            const g1 = ctx.createRadialGradient(canvas.width * 0.25, canvas.height * 0.3, 40, canvas.width * 0.25, canvas.height * 0.3, canvas.width * 0.5);
+            g1.addColorStop(0, 'rgba(147, 51, 234, 0.38)');
+            g1.addColorStop(0.5, 'rgba(79, 70, 229, 0.18)');
+            g1.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = g1;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Nebula 2: Cyan / Biru Neon (Kanan Bawah)
+            const g2 = ctx.createRadialGradient(canvas.width * 0.75, canvas.height * 0.65, 50, canvas.width * 0.75, canvas.height * 0.65, canvas.width * 0.55);
+            g2.addColorStop(0, 'rgba(6, 182, 212, 0.35)');
+            g2.addColorStop(0.5, 'rgba(14, 165, 233, 0.15)');
+            g2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = g2;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Nebula 3: Merah Muda Kosmik (Atas Tengah)
+            const g3 = ctx.createRadialGradient(canvas.width * 0.5, canvas.height * 0.15, 30, canvas.width * 0.5, canvas.height * 0.15, canvas.width * 0.4);
+            g3.addColorStop(0, 'rgba(236, 72, 153, 0.28)');
+            g3.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = g3;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.restore();
+        }
+
+        function drawStars(ctx) {
+            ctx.save();
+            for (const star of stars) {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0.2) {
+                    star.speed = -star.speed;
+                }
+                ctx.globalAlpha = Math.max(0.1, Math.min(1, star.alpha));
+                ctx.fillStyle = star.color;
+                ctx.shadowColor = star.color;
+                ctx.shadowBlur = star.size > 1.8 ? 10 : 0;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        // Animation Loop untuk Halaman Awal & Edukasi
+        function ambientSpaceLoop() {
+            if (!state.isPlaying) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawNebula(ctx);
+                drawStars(ctx);
+            }
+            requestAnimationFrame(ambientSpaceLoop);
+        }
+        ambientSpaceLoop();
+
+        // --- 5. FALLING OBJECT CLASS ---
+        class ShapeObject {
+            constructor(diffConfig) {
+                this.size = Math.random() * 16 + 52;
+                this.x = Math.random() * (canvas.width - this.size * 2) + this.size;
+                this.y = -this.size - 20;
+                this.vy = Math.random() * (diffConfig.speedMax - diffConfig.speedMin) + diffConfig.speedMin;
+                this.vx = Math.sin(Math.random() * Math.PI) * 0.8;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = (Math.random() - 0.5) * 0.03;
+
+                const catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+                this.category = SHAPES[catKey];
+                this.subType = this.category.sub[Math.floor(Math.random() * this.category.sub.length)];
+                this.color = this.category.color;
+                this.points = this.category.points;
+            }
+
+            update() {
+                this.y += this.vy;
+                this.x += this.vx;
+                this.rotation += this.rotSpeed;
+                if (this.x - this.size < 0 || this.x + this.size > canvas.width) this.vx *= -1;
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 18;
+                ctx.fillStyle = this.color;
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 4;
+
+                ctx.beginPath();
+                const r = this.size;
+                if (this.subType === "SEGITIGA") {
+                    ctx.moveTo(0, -r);
+                    ctx.lineTo(r * 0.86, r * 0.5);
+                    ctx.lineTo(-r * 0.86, r * 0.5);
+                } else if (this.subType === "PERSEGI") {
+                    ctx.rect(-r * 0.7, -r * 0.7, r * 1.4, r * 1.4);
+                } else if (this.subType === "PERSEGI PANJANG") {
+                    ctx.rect(-r * 0.9, -r * 0.55, r * 1.8, r * 1.1);
+                } else if (this.subType === "TRAPESIUM") {
+                    ctx.moveTo(-r * 0.5, -r * 0.55);
+                    ctx.lineTo(r * 0.5, -r * 0.55);
+                    ctx.lineTo(r * 0.85, r * 0.55);
+                    ctx.lineTo(-r * 0.85, r * 0.55);
+                } else if (this.subType === "SEGILIMA") {
+                    this.drawPoly(ctx, 5, r * 0.8);
+                } else if (this.subType === "SEGIENAM") {
+                    this.drawPoly(ctx, 6, r * 0.8);
+                } else if (this.subType === "SEGIDELAPAN") {
+                    this.drawPoly(ctx, 8, r * 0.8);
+                } else {
+                    ctx.arc(0, 0, r * 0.75, 0, Math.PI * 2);
+                }
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+
+                // Draw Label
+                ctx.save();
+                ctx.font = '900 13px Fredoka, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.strokeStyle = '#0f172a';
+                ctx.lineWidth = 4;
+                ctx.strokeText(this.subType, this.x, this.y - this.size - 8);
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(this.subType, this.x, this.y - this.size - 8);
+                ctx.restore();
+            }
+
+            drawPoly(ctx, sides, radius) {
+                const angle = (Math.PI * 2) / sides;
+                for (let i = 0; i < sides; i++) {
+                    const x = Math.cos(angle * i) * radius;
+                    const y = Math.sin(angle * i) * radius;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+            }
+        }
+
+        // --- 6. PARTICLES & FLOATING TEXT ---
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x; this.y = y; this.color = color;
+                this.radius = Math.random() * 6 + 4;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 8 + 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.alpha = 1;
+            }
+            update() {
+                this.x += this.vx; this.y += this.vy; this.vy += 0.15; this.alpha -= 0.03;
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.fillStyle = this.color;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        class PopText {
+            constructor(x, y, text, color) {
+                this.x = x; this.y = y; this.text = text; this.color = color;
+                this.alpha = 1; this.vy = -2.5;
+            }
+            update() { this.y += this.vy; this.alpha -= 0.025; }
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.font = '900 24px Fredoka, sans-serif';
+                ctx.fillStyle = this.color; ctx.strokeStyle = '#000'; ctx.lineWidth = 4;
+                ctx.textAlign = 'center';
+                ctx.strokeText(this.text, this.x, this.y); ctx.fillText(this.text, this.x, this.y);
+                ctx.restore();
+            }
+        }
+
+        function triggerExplosion(x, y, color) {
+            for (let i = 0; i < 25; i++) state.particles.push(new Particle(x, y, color));
+        }
+
+        // --- 7. SCREEN SWITCHER ---
+        function setScreen(screenId) {
+            state.screen = screenId;
+            ['splash', 'education', 'gameplay', 'results'].forEach(id => {
+                const el = document.getElementById(`screen-${id}`);
+                if (!el) return;
+                if (id === screenId) {
+                    el.classList.remove('hidden');
+                    el.classList.add('flex');
+                } else {
+                    el.classList.add('hidden');
+                    el.classList.remove('flex');
+                }
+            });
+        }
+
+        // --- 8. HAND TRACKING & CAMERA ENGINE ---
+        let mediaStream = null;
+        let isCameraActive = false;
+
+        async function startHandTracking() {
+            const statusBox = document.getElementById('camera-status-box');
+            const loadingText = document.getElementById('tracker-loading-text');
+            const errorMsg = document.getElementById('camera-error-msg');
+            const retryBtn = document.getElementById('btn-retry-camera');
+            const fallbackTouchBtn = document.getElementById('btn-fallback-touch');
+
+            if (statusBox) statusBox.classList.remove('hidden');
+            if (loadingText) loadingText.classList.remove('hidden');
+            if (errorMsg) errorMsg.classList.add('hidden');
+            if (retryBtn) retryBtn.classList.add('hidden');
+            if (fallbackTouchBtn) fallbackTouchBtn.classList.add('hidden');
+
+            try {
+                // Check browser mediaDevices support
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    throw new Error("Browser ini tidak mendukung akses kamera (MediaDevices API).");
+                }
+
+                if (typeof Hands === 'undefined') {
+                    throw new Error("Modul AI Hands belum selesai diunduh. Periksa koneksi internet Anda.");
+                }
+
+                // Inisialisasi MediaPipe Hands
+                const hands = new Hands({
+                    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+                });
+                hands.setOptions({
+                    maxNumHands: 2,
+                    modelComplexity: 1,
+                    minDetectionConfidence: 0.55,
+                    minTrackingConfidence: 0.55
+                });
+                hands.onResults(onHandResults);
+
+                // Hentikan stream lama jika ada
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                }
+
+                // Sistem Fallback Multi-Tingkat Kamera Khusus Android Chrome & Web
+                try {
+                    // Percobaan 1: Constraint Ideal (FacingMode User)
+                    mediaStream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+                        audio: false
+                    });
+                } catch (e1) {
+                    console.warn("Primary camera constraint failed, trying fallback 1...", e1);
+                    try {
+                        // Percobaan 2: Constraint Sederhana Kamera Depan
+                        mediaStream = await navigator.mediaDevices.getUserMedia({
+                            video: { facingMode: 'user' },
+                            audio: false
+                        });
+                    } catch (e2) {
+                        console.warn("Secondary constraint failed, trying basic video...", e2);
+                        // Percobaan 3: Default Video
+                        mediaStream = await navigator.mediaDevices.getUserMedia({
+                            video: true,
+                            audio: false
+                        });
+                    }
+                }
+
+                videoElement.srcObject = mediaStream;
+                await videoElement.play();
+
+                isCameraActive = true;
+                if (statusBox) statusBox.classList.add('hidden');
+                state.useMouse = false;
+                const trackingText = document.getElementById('hud-tracking-text');
+                if (trackingText) trackingText.innerText = "Hand Tracking Aktif (Gunakan Tangan)";
+
+                // Frame processing loop
+                async function processVideoFrame() {
+                    if (isCameraActive && state.isPlaying && videoElement.readyState >= 2) {
+                        try {
+                            await hands.send({ image: videoElement });
+                        } catch (err) {
+                            console.warn("Frame send error:", err);
+                        }
+                    }
+                    if (isCameraActive && state.isPlaying) {
+                        requestAnimationFrame(processVideoFrame);
+                    }
+                }
+
+                bootGameplay();
+                requestAnimationFrame(processVideoFrame);
+
+            } catch (err) {
+                console.error("Camera access error:", err);
+                if (loadingText) loadingText.classList.add('hidden');
+                if (errorMsg) errorMsg.classList.remove('hidden');
+                if (retryBtn) retryBtn.classList.remove('hidden');
+                if (fallbackTouchBtn) fallbackTouchBtn.classList.remove('hidden');
+
+                let readableError = "Gagal mengakses kamera.";
+                if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+                    readableError = "🔒 <b>IZIN KAMERA DIBLOKIR DI CHROME ANDROID</b><br/>" +
+                        "1. Klik ikon <b>Gembok 🔒</b> di sebelah kiri alamat URL browser.<br/>" +
+                        "2. Pilih <b>Setelan situs</b> (Site settings) > <b>Kamera</b>.<br/>" +
+                        "3. Ubah status menjadi <b>IZINKAN (Allow)</b>.<br/>" +
+                        "4. Klik tombol <b>'Coba Lagi'</b> atau gunakan <b>'Lanjut Mode Sentuh'</b>.";
+                } else if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+                    readableError = "📷 Perangkat kamera tidak ditemukan pada HP/Komputer ini.";
+                } else if (err.name === 'NotReadableError' || err.name === 'TrackStartError') {
+                    readableError = "⚠️ Kamera sedang digunakan oleh aplikasi/tab lain di HP Anda.";
+                } else if (err.message) {
+                    readableError = `⚠️ ${err.message}`;
+                }
+
+                if (errorMsg) errorMsg.innerHTML = readableError;
+                voice.speak("Izin kamera terblokir di Chrome. Kamu bisa mengizinkannya di setelan situs atau memilih Mode Sentuh Layar.", true);
+            }
+        }
+
+        function onHandResults(results) {
+            state.handCursors = [];
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+                for (const landmarks of results.multiHandLandmarks) {
+                    const wrist = landmarks[0];
+                    const indexBase = landmarks[5];
+                    const pinkyBase = landmarks[17];
+                    const rawX = (wrist.x + indexBase.x + pinkyBase.x) / 3;
+                    const rawY = (wrist.y + indexBase.y + pinkyBase.y) / 3;
+                    state.handCursors.push({ x: (1 - rawX) * canvas.width, y: rawY * canvas.height });
+                }
+            }
+        }
+
+        function enableMouseFallback() {
+            isCameraActive = false;
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+            state.useMouse = true;
+            const trackingText = document.getElementById('hud-tracking-text');
+            if (trackingText) trackingText.innerText = "Mode Touch Screen / Mouse Aktif";
+            bootGameplay();
+        }
+
+        window.addEventListener('mousemove', (e) => { if (state.useMouse) state.mousePos = { x: e.clientX, y: e.clientY }; });
+        window.addEventListener('touchmove', (e) => {
+            if (state.useMouse && e.touches.length > 0) state.mousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }, { passive: true });
+
+        // --- 9. GAME LOGIC ---
+        function setMission() {
+            const catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+            state.missionCat = SHAPES[catKey];
+            state.missionProgress = 0;
+            state.missionTarget = Math.floor(Math.random() * 2) + 2;
+
+            const missionTitle = document.getElementById('hud-mission-title');
+            const missionCount = document.getElementById('hud-mission-count');
+            const missionBadge = document.getElementById('hud-mission-badge');
+
+            if (missionTitle) missionTitle.innerText = `TANGKAP ${state.missionCat.name}`;
+            if (missionCount) missionCount.innerText = `0/${state.missionTarget}`;
+            if (missionBadge) missionBadge.style.borderColor = state.missionCat.color;
+
+            // Narasi Misi Baru
+            voice.speak(`Misi baru: Tangkap ${state.missionCat.name}!`, false);
+        }
+
+        function processCatch(shape, index, cursorX, cursorY) {
+            state.shapes.splice(index, 1);
+            const isTarget = shape.category.name === state.missionCat.name;
+            const config = CONFIG[state.difficulty];
+
+            if (isTarget) {
+                audio.playCatchPop();
+                state.score += shape.points;
+                state.missionProgress++;
+                state.correctCatches++;
+                triggerExplosion(cursorX, cursorY, shape.color);
+                state.texts.push(new PopText(cursorX, cursorY, `+${shape.points}`, '#fde047'));
+                const missionCount = document.getElementById('hud-mission-count');
+                if (missionCount) missionCount.innerText = `${state.missionProgress}/${state.missionTarget}`;
+
+                if (state.missionProgress >= state.missionTarget) {
+                    audio.playFanfare();
+                    voice.speak("Misi selesai! Dapatkan bonus tiga puluh poin!", true);
+                    state.score += 30;
+                    state.texts.push(new PopText(canvas.width / 2, canvas.height / 3, `MISI SELESAI! +30`, '#4ade80'));
+                    triggerExplosion(canvas.width / 2, canvas.height / 3, '#4ade80');
+                    setTimeout(() => setMission(), 1200);
+                } else {
+                    const praise = PRAISE_PHRASES[Math.floor(Math.random() * PRAISE_PHRASES.length)];
+                    voice.speak(praise, true);
+                }
+            } else {
+                audio.playError();
+                state.wrongCatches++;
+                const warn = WARNING_PHRASES[Math.floor(Math.random() * WARNING_PHRASES.length)];
+                voice.speak(warn, true);
+                triggerExplosion(cursorX, cursorY, '#ef4444');
+                if (config.penalty > 0) {
+                    state.score = Math.max(0, state.score - config.penalty);
+                    state.texts.push(new PopText(cursorX, cursorY, `-${config.penalty}`, '#ef4444'));
+                }
+                state.lives--;
+                renderLives();
+                if (state.lives <= 0) finishGame();
+            }
+
+            const hudScore = document.getElementById('hud-score');
+            if (hudScore) hudScore.innerText = state.score;
+        }
+
+        function renderLives() {
+            let html = '';
+            for (let i = 0; i < CONFIG[state.difficulty].maxLives; i++) {
+                html += i < state.lives ? '❤️' : '🖤';
+            }
+            const hudLives = document.getElementById('hud-lives');
+            if (hudLives) hudLives.innerHTML = html;
+        }
+
+        function bootGameplay() {
+            audio.init();
+            const config = CONFIG[state.difficulty];
+            state.isPlaying = true;
+            state.isPaused = false;
+            state.score = 0;
+            state.lives = config.maxLives;
+            state.timer = config.timeLimit;
+            state.shapes = [];
+            state.particles = [];
+            state.texts = [];
+            state.correctCatches = 0;
+            state.wrongCatches = 0;
+
+            const hudScore = document.getElementById('hud-score');
+            const hudTimer = document.getElementById('hud-timer');
+            if (hudScore) hudScore.innerText = '0';
+            if (hudTimer) hudTimer.innerText = state.timer;
+            renderLives();
+            setMission();
+            setScreen('gameplay');
+
+            clearInterval(state.timerTimer);
+            state.timerTimer = setInterval(() => {
+                if (!state.isPlaying || state.isPaused) return;
+                state.timer--;
+                const hudTimer = document.getElementById('hud-timer');
+                if (hudTimer) hudTimer.innerText = state.timer;
+                if (state.timer <= 0) finishGame();
+            }, 1000);
+
+            clearInterval(state.spawnTimer);
+            state.spawnTimer = setInterval(() => {
+                if (state.isPlaying && !state.isPaused && state.shapes.length < 7) {
+                    state.shapes.push(new ShapeObject(config));
+                }
+            }, 1200);
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        function finishGame() {
+            state.isPlaying = false;
+            clearInterval(state.timerTimer);
+            clearInterval(state.spawnTimer);
+
+            const total = state.correctCatches + state.wrongCatches;
+            const accuracy = total > 0 ? Math.round((state.correctCatches / total) * 100) : 0;
+
+            let stars = '⭐';
+            let badge = 'Coba Lagi Yuk! Pasti Lebih Hebat!';
+            if (state.score >= 120) {
+                stars = '⭐⭐⭐'; badge = 'Luar Biasa! Jagoan Geometri Sejati! 🎉';
+            } else if (state.score >= 50) {
+                stars = '⭐⭐'; badge = 'Hebat! Kamu Sangat Mengenal Bangun Datar! 👍';
+            }
+
+            const resStars = document.getElementById('res-stars');
+            const resScore = document.getElementById('res-final-score');
+            const resCorrect = document.getElementById('res-stat-correct');
+            const resWrong = document.getElementById('res-stat-wrong');
+            const resAccuracy = document.getElementById('res-stat-accuracy');
+            const resBadge = document.getElementById('res-badge-text');
+
+            if (resStars) resStars.innerHTML = stars;
+            if (resScore) resScore.innerText = state.score;
+            if (resCorrect) resCorrect.innerText = state.correctCatches;
+            if (resWrong) resWrong.innerText = state.wrongCatches;
+            if (resAccuracy) resAccuracy.innerText = `${accuracy}%`;
+            if (resBadge) resBadge.innerText = badge;
+
+            voice.speak(`Permainan selesai! Skor akhirmu ${state.score} poin dengan akurasi ${accuracy} persen. ${badge}`, true);
+
+            setScreen('results');
+        }
+
+        // --- 10. MAIN RENDER LOOP ---
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Background Luar Angkasa (Nebula Kosmik & 150 Bintang Gemerlap)
+            drawNebula(ctx);
+            drawStars(ctx);
+
+            // Transparansi Kamera (Menyatu dengan Latar Luar Angkasa)
+            if (videoElement.readyState === 4) {
+                ctx.save();
+                ctx.translate(canvas.width, 0);
+                ctx.scale(-1, 1);
+                ctx.globalAlpha = 0.65;
+                ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                ctx.restore();
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.3)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            if (state.isPlaying) {
+                if (!state.isPaused) {
+                    // Render Shapes
+                    for (let i = state.shapes.length - 1; i >= 0; i--) {
+                        const shape = state.shapes[i];
+                        shape.update();
+                        shape.draw(ctx);
+
+                        if (shape.y - shape.size > canvas.height + 30) {
+                            state.shapes.splice(i, 1);
+                            continue;
+                        }
+
+                        // Check collision
+                        const cursors = state.useMouse ? [{ x: state.mousePos.x, y: state.mousePos.y }] : state.handCursors;
+                        for (const c of cursors) {
+                            if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
+                                processCatch(shape, i, c.x, c.y);
+                                break;
+                            }
+                        }
+                    }
+
+                    // Particles & Text
+                    for (let i = state.particles.length - 1; i >= 0; i--) {
+                        state.particles[i].update(); state.particles[i].draw(ctx);
+                        if (state.particles[i].alpha <= 0) state.particles.splice(i, 1);
+                    }
+                    for (let i = state.texts.length - 1; i >= 0; i--) {
+                        state.texts[i].update(); state.texts[i].draw(ctx);
+                        if (state.texts[i].alpha <= 0) state.texts.splice(i, 1);
+                    }
+                } else {
+                    state.shapes.forEach(shape => shape.draw(ctx));
+                }
+
+                // Render Hand Cursor Ring
+                const cursors = state.useMouse ? [{ x: state.mousePos.x, y: state.mousePos.y }] : state.handCursors;
+                cursors.forEach(c => drawHandRing(c.x, c.y));
+
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        function drawHandRing(x, y) {
+            ctx.save();
+            ctx.translate(x, y);
+
+            ctx.shadowColor = '#38bdf8';
+            ctx.shadowBlur = 20;
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 4;
+            ctx.beginPath(); ctx.arc(0, 0, 42, 0, Math.PI * 2); ctx.stroke();
+
+            ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+            ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
+
+            ctx.font = '900 12px Fredoka, sans-serif';
+            ctx.fillStyle = '#fde047';
+            ctx.textAlign = 'center';
+            ctx.fillText('🖐️ PENANGKAP', 0, 58);
+
+            ctx.restore();
+        }
+
+        // --- 11. BUTTON LISTENERS ---
+        function attachButtonListener(id, callback) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let lastTriggered = 0;
+            const handler = (e) => {
+                const now = Date.now();
+                if (now - lastTriggered < 300) return; // Debounce 300ms universal
+                lastTriggered = now;
+                try { if (audio && audio.init) audio.init(); } catch (err) {}
+                try { callback(e); } catch (err) { console.error("Button handler error:", err); }
+            };
+            el.addEventListener('click', handler);
+            el.addEventListener('touchend', handler, { passive: true });
+        }
+
+        document.querySelectorAll('.btn-diff').forEach(btn => {
+            const handler = (e) => {
+                try { audio.init(); } catch (err) {}
+                audio.playClick();
+                document.querySelectorAll('.btn-diff').forEach(b => b.classList.remove('ring-2', 'ring-amber-400', 'border-amber-400'));
+                const target = e.currentTarget;
+                target.classList.add('ring-2', 'ring-amber-400', 'border-amber-400');
+                state.difficulty = target.getAttribute('data-diff');
+            };
+            btn.addEventListener('click', handler);
+            btn.addEventListener('touchend', handler, { passive: true });
+        });
+
+        // Inisialisasi awal saat window selesai dimuat di Google Script
+        window.addEventListener('load', () => {
+            attachButtonListener('btn-play-now', () => { audio.playClick(); setScreen('education'); });
+            attachButtonListener('btn-open-guide', () => { audio.playClick(); setScreen('education'); });
+            attachButtonListener('btn-close-guide', () => { audio.playClick(); voice.stop(); setScreen('splash'); });
+
+            attachButtonListener('btn-read-instructions', () => {
+                audio.playClick();
+                voice.speak("Selamat datang! Gunakan telapak tanganmu di depan kamera atau sentuh layar untuk menangkap bangun datar. Perhatikan target misi di bagian atas layar dan tangkap bentuk yang sesuai. Hati-hati, salah tangkap akan mengurangi skor atau nyawa. Selamat bermain!", true);
+            });
+
+            attachButtonListener('btn-start-camera', () => { audio.playClick(); startHandTracking(); });
+            attachButtonListener('btn-retry-camera', () => { audio.playClick(); startHandTracking(); });
+            attachButtonListener('btn-fallback-touch', () => { audio.playClick(); enableMouseFallback(); });
+            attachButtonListener('btn-start-mouse', () => { audio.playClick(); enableMouseFallback(); });
+
+            attachButtonListener('btn-toggle-sound', () => {
+                const isMuted = audio.toggleMute();
+                document.getElementById('btn-toggle-sound').innerText = isMuted ? '🔇' : '🔊';
+            });
+
+            attachButtonListener('btn-pause', () => {
+                audio.playClick();
+                voice.stop();
+                state.isPaused = true;
+                document.getElementById('modal-pause').classList.remove('hidden');
+                document.getElementById('modal-pause').classList.add('flex');
+            });
+
+            attachButtonListener('btn-resume', () => {
+                audio.playClick();
+                state.isPaused = false;
+                document.getElementById('modal-pause').classList.add('hidden');
+            });
+
+            attachButtonListener('btn-quit', () => {
+                audio.playClick();
+                voice.stop();
+                state.isPlaying = false;
+                document.getElementById('modal-pause').classList.add('hidden');
+                setScreen('splash');
+            });
+
+            attachButtonListener('btn-restart', () => { audio.playClick(); bootGameplay(); });
+            attachButtonListener('btn-home', () => { audio.playClick(); voice.stop(); setScreen('splash'); });
+
+            // Start View
+            setScreen('splash');
+        });
+    </script>
+</body>
+</html>
