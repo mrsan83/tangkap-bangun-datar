@@ -291,7 +291,7 @@
             <!-- Waktu & Quick Controls -->
             <div class="flex items-center gap-2">
                 <div class="bg-cyan-500 text-slate-950 px-4 py-2 rounded-full font-black flex items-center gap-1.5 shadow-lg text-lg sm:text-xl border-2 border-white">
-                    <span>⏱️</span> <span id="hud-timer" class="font-mono text-2xl">60</span>
+                    <span>⏱️</span> <span id="hud-timer" class="font-mono text-2xl">120</span>
                 </div>
                 <button id="btn-toggle-sound" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">🔊</button>
                 <button id="btn-pause" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">⏸️</button>
@@ -544,9 +544,9 @@
         const SHAPE_KEYS = Object.keys(SHAPES);
 
         const CONFIG = {
-            easy: { speedMin: 1.5, speedMax: 2.5, timeLimit: 90, maxLives: 5, penalty: 0 },
-            medium: { speedMin: 2.3, speedMax: 3.8, timeLimit: 60, maxLives: 3, penalty: 10 },
-            hard: { speedMin: 3.5, speedMax: 5.5, timeLimit: 45, maxLives: 3, penalty: 15 }
+            easy: { speedMin: 1.5, speedMax: 2.5, timeLimit: 120, maxLives: 5, penalty: 0 },
+            medium: { speedMin: 2.3, speedMax: 3.8, timeLimit: 120, maxLives: 3, penalty: 10 },
+            hard: { speedMin: 3.5, speedMax: 5.5, timeLimit: 120, maxLives: 3, penalty: 15 }
         };
 
         // --- 3. STATE ---
@@ -566,6 +566,8 @@
             handCursors: [],
             useMouse: false,
             mousePos: { x: -1000, y: -1000 },
+            touchCursors: [],
+            isMouseDown: false,
             missionCat: null,
             missionProgress: 0,
             missionTarget: 3,
@@ -955,14 +957,61 @@
             }
             state.useMouse = true;
             const trackingText = document.getElementById('hud-tracking-text');
-            if (trackingText) trackingText.innerText = "Mode Touch Screen / Mouse Aktif";
+            if (trackingText) trackingText.innerText = "Mode Sentuh Multi-Touch (Bisa 2 Pemain)";
             bootGameplay();
         }
 
-        window.addEventListener('mousemove', (e) => { if (state.useMouse) state.mousePos = { x: e.clientX, y: e.clientY }; });
-        window.addEventListener('touchmove', (e) => {
-            if (state.useMouse && e.touches.length > 0) state.mousePos = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-        }, { passive: true });
+        // Multi-Touch (2 Pemain Simultan) & Event Listener Sentuh
+        function updateTouches(e) {
+            if (!state.useMouse) return;
+            state.touchCursors = [];
+            // Deteksi semua sentuhan jari di layar (Dukungan 2 Pemain)
+            for (let i = 0; i < e.touches.length; i++) {
+                const touch = e.touches[i];
+                state.touchCursors.push({
+                    x: touch.clientX,
+                    y: touch.clientY,
+                    label: e.touches.length > 1 ? `🖐️ PEMAIN ${i + 1}` : '🖐️ PENANGKAP',
+                    color: i === 0 ? '#38bdf8' : '#fde047'
+                });
+            }
+        }
+
+        ['touchstart', 'touchmove', 'touchend', 'touchcancel'].forEach(eventType => {
+            window.addEventListener(eventType, (e) => {
+                if (state.useMouse) updateTouches(e);
+            }, { passive: true });
+        });
+
+        window.addEventListener('mousedown', (e) => {
+            if (state.useMouse) {
+                state.isMouseDown = true;
+                state.mousePos = { x: e.clientX, y: e.clientY };
+            }
+        });
+        window.addEventListener('mousemove', (e) => {
+            if (state.useMouse) {
+                state.mousePos = { x: e.clientX, y: e.clientY };
+            }
+        });
+        window.addEventListener('mouseup', () => { state.isMouseDown = false; });
+
+        // Mendapatkan Penangkap Aktif (Kosong jika layar tidak disentuh)
+        function getActiveCursors() {
+            if (!state.useMouse) {
+                return state.handCursors; // Mode Kamera Hand Tracking
+            }
+            // 1. Jika layar disentuh jari (Multi-touch 2 pemain)
+            if (state.touchCursors && state.touchCursors.length > 0) {
+                return state.touchCursors;
+            }
+            // 2. Jika menggunakan Mouse Komputer (Hanya aktif saat diklik)
+            if (state.isMouseDown && state.mousePos.x >= 0) {
+                return [{ x: state.mousePos.x, y: state.mousePos.y, label: '🖐️ PENANGKAP', color: '#38bdf8' }];
+            }
+            // 3. Layar tidak disentuh -> Penangkap HILANG TOTAL
+            return [];
+        }
 
         // --- 9. GAME LOGIC ---
         function setMission() {
@@ -1146,8 +1195,8 @@
                             continue;
                         }
 
-                        // Check collision
-                        const cursors = state.useMouse ? [{ x: state.mousePos.x, y: state.mousePos.y }] : state.handCursors;
+                        // Check collision untuk semua penangkap aktif (Kamera / Multi-touch)
+                        const cursors = getActiveCursors();
                         for (const c of cursors) {
                             if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
                                 processCatch(shape, i, c.x, c.y);
@@ -1169,34 +1218,34 @@
                     state.shapes.forEach(shape => shape.draw(ctx));
                 }
 
-                // Render Hand Cursor Ring
-                const cursors = state.useMouse ? [{ x: state.mousePos.x, y: state.mousePos.y }] : state.handCursors;
-                cursors.forEach(c => drawHandRing(c.x, c.y));
+                // Render Catcher Ring (Hanya jika layar disentuh)
+                const cursors = getActiveCursors();
+                cursors.forEach(c => drawHandRing(c.x, c.y, c.label || '🖐️ PENANGKAP', c.color || '#38bdf8'));
 
                 requestAnimationFrame(gameLoop);
             }
         }
 
-        function drawHandRing(x, y) {
+        function drawHandRing(x, y, label = '🖐️ PENANGKAP', color = '#38bdf8') {
             ctx.save();
             ctx.translate(x, y);
 
-            ctx.shadowColor = '#38bdf8';
+            ctx.shadowColor = color;
             ctx.shadowBlur = 20;
-            ctx.strokeStyle = '#38bdf8';
+            ctx.strokeStyle = color;
             ctx.lineWidth = 4;
             ctx.beginPath(); ctx.arc(0, 0, 42, 0, Math.PI * 2); ctx.stroke();
 
-            ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+            ctx.fillStyle = color === '#38bdf8' ? 'rgba(56, 189, 248, 0.3)' : 'rgba(250, 204, 21, 0.3)';
             ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.fill();
 
             ctx.fillStyle = '#ffffff';
             ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
 
             ctx.font = '900 12px Fredoka, sans-serif';
-            ctx.fillStyle = '#fde047';
+            ctx.fillStyle = color;
             ctx.textAlign = 'center';
-            ctx.fillText('🖐️ PENANGKAP', 0, 58);
+            ctx.fillText(label, 0, 58);
 
             ctx.restore();
         }
