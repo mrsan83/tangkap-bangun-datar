@@ -211,6 +211,54 @@
                 </div>
             </div>
 
+            <!-- Jenis Bangun Datar -->
+            <div class="bg-slate-900/90 p-3.5 sm:p-4 rounded-3xl border-2 border-indigo-400/30 mb-4">
+                <h3 class="font-black text-xs sm:text-sm text-indigo-300 uppercase tracking-wider text-center mb-3 flex items-center justify-center gap-1.5">
+                    <span>📐</span> JENIS BANGUN DATAR
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                    <!-- 1. Segitiga -->
+                    <div class="bg-slate-950/80 p-2.5 rounded-2xl border border-amber-400/40 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 80 80" class="w-12 h-12 sm:w-14 sm:h-14 mb-1.5 drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]">
+                            <polygon points="40,12 66,60 14,60" fill="#f59e0b" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" />
+                        </svg>
+                        <span class="text-[11px] font-black text-amber-300 tracking-wide">SEGITIGA</span>
+                    </div>
+
+                    <!-- 2. Segiempat -->
+                    <div class="bg-slate-950/80 p-2.5 rounded-2xl border border-sky-400/40 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 80 80" class="w-12 h-12 sm:w-14 sm:h-14 mb-1.5 drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]">
+                            <rect x="17" y="17" width="46" height="46" rx="4" fill="#38bdf8" stroke="#ffffff" stroke-width="4" />
+                        </svg>
+                        <span class="text-[11px] font-black text-sky-300 tracking-wide">SEGIEMPAT</span>
+                    </div>
+
+                    <!-- 3. Segilima -->
+                    <div class="bg-slate-950/80 p-2.5 rounded-2xl border border-purple-400/40 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 80 80" class="w-12 h-12 sm:w-14 sm:h-14 mb-1.5 drop-shadow-[0_0_8px_rgba(168,85,247,0.5)]">
+                            <polygon points="40,14 65.7,32.7 55.9,62.8 24.1,62.8 14.3,32.7" fill="#a855f7" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" />
+                        </svg>
+                        <span class="text-[11px] font-black text-purple-300 tracking-wide">SEGILIMA</span>
+                    </div>
+
+                    <!-- 4. Segienam -->
+                    <div class="bg-slate-950/80 p-2.5 rounded-2xl border border-pink-400/40 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 80 80" class="w-12 h-12 sm:w-14 sm:h-14 mb-1.5 drop-shadow-[0_0_8px_rgba(236,72,153,0.5)]">
+                            <polygon points="40,13 63.4,26.5 63.4,53.5 40,67 16.6,53.5 16.6,26.5" fill="#ec4899" stroke="#ffffff" stroke-width="4" stroke-linejoin="round" />
+                        </svg>
+                        <span class="text-[11px] font-black text-pink-300 tracking-wide">SEGIENAM</span>
+                    </div>
+
+                    <!-- 5. Lingkaran -->
+                    <div class="col-span-2 sm:col-span-1 bg-slate-950/80 p-2.5 rounded-2xl border border-emerald-400/40 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 80 80" class="w-12 h-12 sm:w-14 sm:h-14 mb-1.5 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">
+                            <circle cx="40" cy="40" r="25" fill="#4ade80" stroke="#ffffff" stroke-width="4" />
+                        </svg>
+                        <span class="text-[11px] font-black text-emerald-300 tracking-wide">LINGKARAN</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tujuan Pembelajaran & Target Capaian -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
                 <div class="bg-slate-900/90 p-3.5 rounded-2xl border-2 border-emerald-400/30 flex items-start gap-3">
@@ -373,8 +421,8 @@
                     </div>
 
                     <!-- BADGE VS TENGAH -->
-                    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center border-2 border-white shadow-lg pointer-events-none">
-                        VS
+                    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-800 text-yellow-300 font-black text-xs flex items-center justify-center border-2 border-white shadow-[0_0_15px_rgba(239,68,68,0.85)] pointer-events-none">
+                        <span class="drop-shadow-[0_1px_1px_rgba(69,10,10,0.95)]">VS</span>
                     </div>
 
                     <!-- PANEL PEMAIN 2 -->
@@ -403,7 +451,7 @@
                 </p>
             </div>
 
-            <!-- Box Diagnostic & Error Kamera (Chrome Android / Browser) -->
+            <!-- Box Diagnostic & Error Kamera -->
             <div id="camera-status-box" class="mb-4 hidden p-4 rounded-2xl bg-slate-900/95 border border-rose-500/40 text-center shadow-xl">
                 <div id="camera-error-msg" class="text-xs text-rose-300 font-bold my-1 leading-relaxed text-left bg-rose-950/50 p-3 rounded-xl border border-rose-500/30"></div>
                 <div class="flex flex-col sm:flex-row gap-2 mt-3 justify-center">
@@ -479,7 +527,7 @@
             <!-- Waktu & Quick Controls -->
             <div class="flex items-center gap-2">
                 <div class="bg-cyan-500 text-slate-950 px-4 py-2 rounded-full font-black flex items-center gap-1.5 shadow-lg text-lg sm:text-xl border-2 border-white">
-                    <span>⏱️</span> <span id="hud-timer" class="font-mono text-2xl">120</span>
+                    <span>⏱️</span> <span id="hud-timer" class="font-mono text-2xl">150</span>
                 </div>
                 <button id="btn-toggle-sound" type="button" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">🔊</button>
                 <button id="btn-pause" type="button" class="w-11 h-11 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-xl shadow border border-slate-600 transition">⏸️</button>
@@ -516,7 +564,7 @@
                 </div>
                 <div class="flex items-center gap-1.5">
                     <div class="bg-rose-500 text-white px-3 py-1 rounded-full font-black flex items-center gap-1 shadow text-sm sm:text-base border border-white">
-                        <span>⏱️</span> <span id="hud-battle-timer" class="font-mono">120</span>
+                        <span>⏱️</span> <span id="hud-battle-timer" class="font-mono">150</span>
                     </div>
                     <button id="btn-battle-sound" type="button" class="w-9 h-9 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-base shadow border border-slate-600 transition">🔊</button>
                     <button id="btn-battle-pause" type="button" class="w-9 h-9 rounded-full glass-pill hover:bg-slate-800 flex items-center justify-center text-base shadow border border-slate-600 transition">⏸️</button>
@@ -888,55 +936,83 @@
 
         // --- 2. KATALOG GEOMETRI ---
         const SHAPES = {
-            SEGITIGA: { name: "SEGITIGA", points: 10, color: "#f59e0b", sub: ["SEGITIGA"] },
-            SEGIEMPAT: { name: "SEGIEMPAT", points: 15, color: "#38bdf8", sub: ["PERSEGI", "PERSEGI PANJANG", "TRAPESIUM"] },
-            SEGIBANYAK: { name: "SEGI BANYAK", points: 25, color: "#a855f7", sub: ["SEGILIMA", "SEGIENAM", "SEGIDELAPAN"] },
+            SEGITIGA: { name: "SEGITIGA", points: 25, color: "#f59e0b", sub: ["SEGITIGA SAMASISI", "SEGITIGA SAMAKAKI", "SEGITIGA SIKU-SIKU"] },
+            SEGIEMPAT: { name: "SEGIEMPAT", points: 25, color: "#38bdf8", sub: ["PERSEGI", "PERSEGI PANJANG", "TRAPESIUM"] },
+            SEGILIMA: { name: "SEGILIMA", points: 20, color: "#a855f7", sub: ["SEGILIMA"] },
+            SEGIENAM: { name: "SEGIENAM", points: 25, color: "#ec4899", sub: ["SEGIENAM"] },
             LINGKARAN: { name: "LINGKARAN", points: 20, color: "#4ade80", sub: ["LINGKARAN"] }
         };
         const SHAPE_KEYS = Object.keys(SHAPES);
 
         const CONFIG = {
-            easy: { speedMin: 1.5, speedMax: 2.5, timeLimit: 120, maxLives: 5, penalty: 0 },
-            medium: { speedMin: 2.3, speedMax: 3.8, timeLimit: 120, maxLives: 3, penalty: 10 },
-            hard: { speedMin: 3.5, speedMax: 5.5, timeLimit: 120, maxLives: 3, penalty: 15 }
+            easy: { speedMin: 1.5, speedMax: 2.5, timeLimit: 150, maxLives: 5, penalty: 0 },
+            medium: { speedMin: 2.3, speedMax: 3.8, timeLimit: 150, maxLives: 3, penalty: 10 },
+            hard: { speedMin: 3.5, speedMax: 5.5, timeLimit: 150, maxLives: 3, penalty: 15 }
         };
 
-        // --- 3. STATE ---
+        // --- 3. STATE PERMAINAN ---
         const state = {
             screen: 'splash',
-            gameMode: 'solo', // 'solo' atau 'battle'
+            gameMode: 'solo', // 'solo' | 'battle'
             difficulty: 'medium',
             isPlaying: false,
             isPaused: false,
-            score: 0,
-            lives: 3,
-            timer: 120,
+            useMouse: false,
+            timer: 150,
             timerTimer: null,
             spawnTimer: null,
             shapes: [],
             particles: [],
             texts: [],
-            handCursors: [],
-            useMouse: false,
-            mousePos: { x: -1000, y: -1000 },
-            touchCursors: [],
-            isMouseDown: false,
+            // State Mode Klasik (1 Pemain)
+            score: 0,
+            lives: 3,
             missionCat: null,
             missionProgress: 0,
             missionTarget: 3,
             correctCatches: 0,
             wrongCatches: 0,
-            // State khusus Mode Battle (Pemain 1 Kiri & Pemain 2 Kanan)
-            p1: { score: 0, lives: 3, correct: 0, wrong: 0, missionProgress: 0, alive: true },
-            p2: { score: 0, lives: 3, correct: 0, wrong: 0, missionProgress: 0, alive: true }
+            handCursors: [],
+            mousePos: { x: -1000, y: -1000 },
+            isPointerActive: false,
+            lastTouchTime: 0,
+            // State Mode Battle (2 Pemain)
+            p1: {
+                score: 0,
+                lives: 3,
+                alive: true,
+                missionProgress: 0,
+                correctCatches: 0,
+                wrongCatches: 0,
+                cursors: [],
+                touchPos: null
+            },
+            p2: {
+                score: 0,
+                lives: 3,
+                alive: true,
+                missionProgress: 0,
+                correctCatches: 0,
+                wrongCatches: 0,
+                cursors: [],
+                touchPos: null
+            },
+            battleMissionCat: null,
+            battleMissionTarget: 3,
+            // State Aktivasi Sensor Kamera
+            isCameraSettingUp: false,
+            cameraReady: false,
+            sensorReadySolo: false,
+            sensorReadyLeft: false,
+            sensorReadyRight: false,
+            autoStartTriggered: false
         };
 
-        // --- 4. CANVAS RESPONSIVE SETUP ---
+        // --- 4. CANVAS RESPONSIVE & LATAR KOSMIK ---
         const canvas = document.getElementById('game-canvas');
         const ctx = canvas.getContext('2d');
         const videoElement = document.getElementById('video-feed');
 
-        // --- 150 TWINKLING STARS & COSMIC NEBULA ENGINE ---
         const stars = [];
         function initStars() {
             stars.length = 0;
@@ -1018,32 +1094,40 @@
         }
         ambientSpaceLoop();
 
-        // --- 5. FALLING OBJECT CLASS ---
+        // --- 5. OBJEK BANGUN DATAR JATUH ---
         class ShapeObject {
-            constructor(diffConfig, side = 'all') {
-                this.side = side; // 'all' (Solo), 'left' (P1), atau 'right' (P2)
-                this.size = side === 'all' ? (Math.random() * 16 + 52) : (Math.random() * 12 + 44);
-                const halfW = canvas.width / 2;
+            constructor(diffConfig, side = 'solo') {
+                this.side = side; // 'solo' | 'p1' | 'p2'
+                this.size = Math.random() * 14 + 46;
 
-                if (side === 'left') {
-                    this.minX = this.size + 8;
-                    this.maxX = Math.max(this.minX + 20, halfW - this.size - 8);
-                } else if (side === 'right') {
-                    this.minX = halfW + this.size + 8;
-                    this.maxX = Math.max(this.minX + 20, canvas.width - this.size - 8);
+                const halfW = canvas.width / 2;
+                if (this.side === 'p1') {
+                    this.minX = this.size + 12;
+                    this.maxX = Math.max(this.minX + 20, halfW - this.size - 12);
+                } else if (this.side === 'p2') {
+                    this.minX = halfW + this.size + 12;
+                    this.maxX = Math.max(this.minX + 20, canvas.width - this.size - 12);
                 } else {
-                    this.minX = this.size;
-                    this.maxX = Math.max(this.minX + 20, canvas.width - this.size);
+                    this.minX = this.size + 16;
+                    this.maxX = Math.max(this.minX + 20, canvas.width - this.size - 16);
                 }
 
                 this.x = Math.random() * (this.maxX - this.minX) + this.minX;
                 this.y = -this.size - 20;
                 this.vy = Math.random() * (diffConfig.speedMax - diffConfig.speedMin) + diffConfig.speedMin;
-                this.vx = Math.sin(Math.random() * Math.PI) * 0.7;
+                this.vx = Math.sin(Math.random() * Math.PI) * 0.75;
                 this.rotation = Math.random() * Math.PI * 2;
                 this.rotSpeed = (Math.random() - 0.5) * 0.03;
 
-                const catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+                // Peluang 45% memunculkan target misi agar permainan tetap seru
+                const activeMission = this.side === 'solo' ? state.missionCat : state.battleMissionCat;
+                let catKey;
+                if (activeMission && Math.random() < 0.45) {
+                    catKey = SHAPE_KEYS.find(k => SHAPES[k].name === activeMission.name) || SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+                } else {
+                    catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+                }
+
                 this.category = SHAPES[catKey];
                 this.subType = this.category.sub[Math.floor(Math.random() * this.category.sub.length)];
                 this.color = this.category.color;
@@ -1054,15 +1138,12 @@
                 this.y += this.vy;
                 this.x += this.vx;
                 this.rotation += this.rotSpeed;
-                const halfW = canvas.width / 2;
-                const leftBound = this.side === 'right' ? halfW + this.size : this.size;
-                const rightBound = this.side === 'left' ? halfW - this.size : canvas.width - this.size;
-                if (this.x < leftBound) {
-                    this.x = leftBound;
-                    this.vx = Math.abs(this.vx);
-                } else if (this.x > rightBound) {
-                    this.x = rightBound;
-                    this.vx = -Math.abs(this.vx);
+                if (this.x < this.minX) {
+                    this.x = this.minX;
+                    this.vx *= -1;
+                } else if (this.x > this.maxX) {
+                    this.x = this.maxX;
+                    this.vx *= -1;
                 }
             }
 
@@ -1079,56 +1160,51 @@
 
                 ctx.beginPath();
                 const r = this.size;
-                if (this.subType === "SEGITIGA") {
-                    ctx.moveTo(0, -r);
-                    ctx.lineTo(r * 0.86, r * 0.5);
-                    ctx.lineTo(-r * 0.86, r * 0.5);
+                if (this.subType === "SEGITIGA SAMASISI") {
+                    ctx.moveTo(0, -r * 0.95);
+                    ctx.lineTo(r * 0.85, r * 0.55);
+                    ctx.lineTo(-r * 0.85, r * 0.55);
+                } else if (this.subType === "SEGITIGA SAMAKAKI") {
+                    ctx.moveTo(0, -r * 1.15);
+                    ctx.lineTo(r * 0.56, r * 0.72);
+                    ctx.lineTo(-r * 0.56, r * 0.72);
+                } else if (this.subType === "SEGITIGA SIKU-SIKU") {
+                    ctx.moveTo(-r * 0.65, -r * 0.85);
+                    ctx.lineTo(-r * 0.65, r * 0.72);
+                    ctx.lineTo(r * 0.85, r * 0.72);
                 } else if (this.subType === "PERSEGI") {
                     ctx.rect(-r * 0.7, -r * 0.7, r * 1.4, r * 1.4);
                 } else if (this.subType === "PERSEGI PANJANG") {
-                    ctx.rect(-r * 0.9, -r * 0.55, r * 1.8, r * 1.1);
+                    ctx.rect(-r * 0.9, -r * 0.52, r * 1.8, r * 1.04);
                 } else if (this.subType === "TRAPESIUM") {
                     ctx.moveTo(-r * 0.5, -r * 0.55);
                     ctx.lineTo(r * 0.5, -r * 0.55);
                     ctx.lineTo(r * 0.85, r * 0.55);
                     ctx.lineTo(-r * 0.85, r * 0.55);
                 } else if (this.subType === "SEGILIMA") {
-                    this.drawPoly(ctx, 5, r * 0.8);
+                    this.drawPoly(ctx, 5, r * 0.82);
                 } else if (this.subType === "SEGIENAM") {
-                    this.drawPoly(ctx, 6, r * 0.8);
-                } else if (this.subType === "SEGIDELAPAN") {
-                    this.drawPoly(ctx, 8, r * 0.8);
+                    this.drawPoly(ctx, 6, r * 0.82);
                 } else {
-                    ctx.arc(0, 0, r * 0.75, 0, Math.PI * 2);
+                    ctx.arc(0, 0, r * 0.76, 0, Math.PI * 2);
                 }
                 ctx.closePath();
                 ctx.fill();
                 ctx.stroke();
-                ctx.restore();
-
-                // Draw Label
-                ctx.save();
-                ctx.font = '900 13px Fredoka, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.strokeStyle = '#0f172a';
-                ctx.lineWidth = 4;
-                ctx.strokeText(this.subType, this.x, this.y - this.size - 8);
-                ctx.fillStyle = '#ffffff';
-                ctx.fillText(this.subType, this.x, this.y - this.size - 8);
                 ctx.restore();
             }
 
             drawPoly(ctx, sides, radius) {
                 const angle = (Math.PI * 2) / sides;
                 for (let i = 0; i < sides; i++) {
-                    const x = Math.cos(angle * i) * radius;
-                    const y = Math.sin(angle * i) * radius;
+                    const x = Math.cos(angle * i - Math.PI / 2) * radius;
+                    const y = Math.sin(angle * i - Math.PI / 2) * radius;
                     if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
                 }
             }
         }
 
-        // --- 6. PARTICLES & FLOATING TEXT ---
+        // --- 6. PARTIKEL & TEKS EFEK ---
         class Particle {
             constructor(x, y, color) {
                 this.x = x; this.y = y; this.color = color;
@@ -1169,14 +1245,10 @@
         }
 
         function triggerExplosion(x, y, color) {
-            for (let i = 0; i < 25; i++) state.particles.push(new Particle(x, y, color));
+            for (let i = 0; i < 22; i++) state.particles.push(new Particle(x, y, color));
         }
 
-        // --- 7. SCREEN SWITCHER ---
-        function playExitVoiceOver() {
-            voice.speak("Terima kasih sudah bermain! Sampai jumpa pada petualangan belajar bangun datar berikutnya.", true);
-        }
-
+        // --- 7. NAVIGASI LAYAR ---
         function setScreen(screenId) {
             state.screen = screenId;
             ['splash', 'education', 'mode-select', 'camera-setup', 'gameplay', 'results', 'exit'].forEach(id => {
@@ -1190,392 +1262,324 @@
                     el.classList.remove('flex');
                 }
             });
-
-            if (screenId === 'exit') {
-                playExitVoiceOver();
-            }
         }
 
-        // --- 8. HAND TRACKING & CAMERA ENGINE ---
-        let mediaStream = null;
-        let isCameraActive = false;
+        // --- 8. KAMERA & SENSOR MEDIAPIPE HANDS ---
         let handsInstance = null;
-        let hasPlayedHandDetectedSound = false;
-        let hasPlayedLeftHandSound = false;
-        let hasPlayedRightHandSound = false;
-        let isAutoLaunchingSolo = false;
-        let isAutoLaunchingBattle = false;
+        let cameraStream = null;
+        let videoLoopId = null;
 
         function stopCameraStream() {
-            isCameraActive = false;
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(track => track.stop());
-                mediaStream = null;
+            state.isCameraSettingUp = false;
+            if (videoLoopId) {
+                cancelAnimationFrame(videoLoopId);
+                videoLoopId = null;
+            }
+            if (cameraStream) {
+                try {
+                    cameraStream.getTracks().forEach(track => track.stop());
+                } catch (e) {}
+                cameraStream = null;
+            }
+            if (videoElement) {
+                videoElement.srcObject = null;
             }
         }
 
-        async function initCameraActivation() {
-            setScreen('camera-setup');
-            hasPlayedHandDetectedSound = false;
-            hasPlayedLeftHandSound = false;
-            hasPlayedRightHandSound = false;
-            isAutoLaunchingSolo = false;
-            isAutoLaunchingBattle = false;
+        async function initHandsModel() {
+            if (handsInstance) return handsInstance;
+            if (typeof Hands === 'undefined') {
+                throw new Error("Library pelacak tangan gagal dimuat. Periksa koneksi internet.");
+            }
+            handsInstance = new Hands({
+                locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+            });
+            handsInstance.setOptions({
+                maxNumHands: 2,
+                modelComplexity: 1,
+                minDetectionConfidence: 0.55,
+                minTrackingConfidence: 0.55
+            });
+            handsInstance.onResults(onHandResults);
+            return handsInstance;
+        }
+
+        async function openCameraSetup() {
+            state.isCameraSettingUp = true;
+            state.cameraReady = false;
+            state.sensorReadySolo = false;
+            state.sensorReadyLeft = false;
+            state.sensorReadyRight = false;
+            state.autoStartTriggered = false;
+            state.handCursors = [];
+            state.p1.cursors = [];
+            state.p2.cursors = [];
 
             const isBattle = state.gameMode === 'battle';
             const setupCard = document.getElementById('camera-setup-card');
-            const setupTitle = document.getElementById('camera-setup-title');
             const soloWrap = document.getElementById('camera-preview-solo-wrap');
             const battleWrap = document.getElementById('camera-preview-battle-wrap');
             const loadingOverlay = document.getElementById('preview-loading-overlay');
             const statusBox = document.getElementById('camera-status-box');
+            const confirmBtn = document.getElementById('btn-confirm-start-game');
             const stepCam = document.getElementById('cam-step-camera');
-            const stepSensor = document.getElementById('cam-step-sensor');
+
+            if (isBattle) {
+                setupCard.classList.remove('max-w-xl');
+                setupCard.classList.add('max-w-3xl');
+                soloWrap.classList.add('hidden');
+                battleWrap.classList.remove('hidden');
+            } else {
+                setupCard.classList.remove('max-w-3xl');
+                setupCard.classList.add('max-w-xl');
+                soloWrap.classList.remove('hidden');
+                battleWrap.classList.add('hidden');
+            }
+
+            loadingOverlay.classList.remove('hidden');
+            statusBox.classList.add('hidden');
+            confirmBtn.disabled = true;
+            confirmBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+            stepCam.className = "mb-3 bg-slate-900/90 px-3 py-2 rounded-2xl border-2 border-amber-400/40 flex items-center justify-center gap-2 text-xs font-black text-amber-300 transition-all";
+            stepCam.innerHTML = `<span>⏳</span> <span>1. Memeriksa Izin Kamera...</span>`;
+
+            const stepSolo = document.getElementById('cam-step-sensor');
+            if (stepSolo) {
+                stepSolo.className = "mb-3 bg-slate-900/90 px-3 py-2 rounded-2xl border-2 border-slate-700 flex items-center justify-center gap-2 text-xs font-black text-slate-400 transition-all";
+                stepSolo.innerHTML = `<span>🖐️</span> <span>2. Menunggu Deteksi Tangan Pemain</span>`;
+            }
+
             const stepLeft = document.getElementById('cam-step-sensor-left');
             const stepRight = document.getElementById('cam-step-sensor-right');
-            const btnConfirm = document.getElementById('btn-confirm-start-game');
-            const handHint = document.getElementById('preview-hand-hint');
-            const battleHint = document.getElementById('preview-battle-hint');
-
-            if (setupCard) {
-                setupCard.className = isBattle
-                    ? "max-w-3xl w-full glass-card p-5 sm:p-7 rounded-[40px] relative my-auto text-center transition-all"
-                    : "max-w-xl w-full glass-card p-5 sm:p-7 rounded-[40px] relative my-auto text-center transition-all";
-            }
-            if (setupTitle) {
-                setupTitle.innerHTML = isBattle
-                    ? `<span>⚔️</span> AKTIVASI SENSOR MODE BATTLE`
-                    : `<span>📷</span> AKTIVASI SENSOR KAMERA`;
-            }
-            if (soloWrap) soloWrap.classList.toggle('hidden', isBattle);
-            if (battleWrap) battleWrap.classList.toggle('hidden', !isBattle);
-            if (loadingOverlay) loadingOverlay.classList.remove('hidden');
-            if (statusBox) statusBox.classList.add('hidden');
-            if (handHint) handHint.classList.add('hidden');
-
-            if (stepCam) {
-                stepCam.className = "mb-3 bg-slate-900/90 px-3 py-2 rounded-2xl border-2 border-amber-400/40 flex items-center justify-center gap-2 text-xs font-black text-amber-300 transition-all";
-                stepCam.innerHTML = `<span>⏳</span> <span>1. Memeriksa Izin Kamera...</span>`;
-            }
-            if (stepSensor) {
-                stepSensor.className = "mb-3 bg-slate-900/90 px-3 py-2 rounded-2xl border-2 border-slate-700 flex items-center justify-center gap-2 text-xs font-black text-slate-400 transition-all";
-                stepSensor.innerHTML = `<span>🖐️</span> <span>2. Menunggu Deteksi Tangan Pemain</span>`;
-            }
             if (stepLeft) {
                 stepLeft.className = "mb-2 bg-slate-950/90 px-2 py-1.5 rounded-xl border border-slate-700 text-[10px] sm:text-xs font-black text-slate-400 transition-all";
-                stepLeft.innerText = "🖐️ Menunggu Tangan Pemain 1";
+                stepLeft.innerHTML = `🖐️ Menunggu Tangan Pemain 1`;
             }
             if (stepRight) {
                 stepRight.className = "mb-2 bg-slate-950/90 px-2 py-1.5 rounded-xl border border-slate-700 text-[10px] sm:text-xs font-black text-slate-400 transition-all";
-                stepRight.innerText = "🖐️ Menunggu Tangan Pemain 2";
-            }
-            if (battleHint) {
-                battleHint.innerText = "👋 Tunjukkan Tangan Pemain 1 & Tangan Pemain 2 di depan kamera untuk langsung mulai!";
-                battleHint.className = "mt-2 text-[11px] font-bold text-amber-200";
-            }
-            if (btnConfirm) {
-                btnConfirm.disabled = true;
-                btnConfirm.classList.add('opacity-50', 'cursor-not-allowed');
+                stepRight.innerHTML = `🖐️ Menunggu Tangan Pemain 2`;
             }
 
-            stopCameraStream();
+            setScreen('camera-setup');
 
             try {
                 if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-                    throw new Error("Browser ini tidak mendukung akses kamera atau konteks tidak aman (HTTPS diperlukan).");
+                    throw new Error("Browser ini tidak mendukung akses kamera WebCam.");
                 }
 
-                // Multi-fallback constraints khusus Chrome Android & WebView
-                let stream = null;
-                try {
-                    stream = await navigator.mediaDevices.getUserMedia({
-                        video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
-                        audio: false
-                    });
-                } catch (e1) {
-                    try {
-                        stream = await navigator.mediaDevices.getUserMedia({
-                            video: { facingMode: 'user' },
-                            audio: false
-                        });
-                    } catch (e2) {
-                        stream = await navigator.mediaDevices.getUserMedia({
-                            video: true,
-                            audio: false
-                        });
-                    }
-                }
+                await initHandsModel();
 
-                mediaStream = stream;
-                videoElement.srcObject = stream;
+                cameraStream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: "user" },
+                    audio: false
+                });
+
+                videoElement.srcObject = cameraStream;
                 await videoElement.play();
 
-                isCameraActive = true;
-                if (loadingOverlay) loadingOverlay.classList.add('hidden');
-                if (handHint && !isBattle) handHint.classList.remove('hidden');
+                state.cameraReady = true;
+                loadingOverlay.classList.add('hidden');
 
-                if (stepCam) {
-                    stepCam.className = "mb-3 bg-emerald-950/80 px-3 py-2 rounded-2xl border-2 border-emerald-400 flex items-center justify-center gap-2 text-xs font-black text-emerald-300 transition-all";
-                    stepCam.innerHTML = `<span>✅</span> <span>1. Kamera Aktif & Terhubung!</span>`;
+                stepCam.className = "mb-3 bg-emerald-950/80 px-3 py-2 rounded-2xl border-2 border-emerald-400/60 flex items-center justify-center gap-2 text-xs font-black text-emerald-300 transition-all";
+                stepCam.innerHTML = `<span>✅</span> <span>1. Kamera WebCam Aktif!</span>`;
+
+                if (!isBattle) {
+                    document.getElementById('preview-hand-hint').classList.remove('hidden');
                 }
 
-                if (btnConfirm) {
-                    btnConfirm.disabled = false;
-                    btnConfirm.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-
-                if (!handsInstance && typeof Hands !== 'undefined') {
-                    handsInstance = new Hands({
-                        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
-                    });
-                    handsInstance.onResults(onHandResults);
-                }
-
-                if (handsInstance) {
-                    handsInstance.setOptions({
-                        maxNumHands: isBattle ? 4 : 2,
-                        modelComplexity: 1,
-                        minDetectionConfidence: 0.5,
-                        minTrackingConfidence: 0.5
-                    });
-                }
-
-                // Loop pemrosesan frame kamera & pratinjau sensor
-                const processCameraFrame = async () => {
-                    if (!isCameraActive) return;
-                    if (videoElement.readyState >= 2) {
-                        if (handsInstance) {
-                            try {
-                                await handsInstance.send({ image: videoElement });
-                            } catch (err) {}
-                        }
-                        if (state.screen === 'camera-setup') {
-                            renderCameraSetupPreviews();
-                        }
+                const processVideoFrame = async () => {
+                    if (!state.isCameraSettingUp && !state.isPlaying) return;
+                    if (videoElement.readyState >= 2 && handsInstance) {
+                        try {
+                            await handsInstance.send({ image: videoElement });
+                        } catch (e) {}
                     }
-                    requestAnimationFrame(processCameraFrame);
+                    if (state.isCameraSettingUp) {
+                        renderCameraSetupPreviews();
+                    }
+                    videoLoopId = requestAnimationFrame(processVideoFrame);
                 };
-                requestAnimationFrame(processCameraFrame);
+                videoLoopId = requestAnimationFrame(processVideoFrame);
 
             } catch (err) {
-                console.warn("Camera error:", err);
-                isCameraActive = false;
-                if (loadingOverlay) loadingOverlay.classList.add('hidden');
-                if (stepCam) {
-                    stepCam.className = "mb-3 bg-rose-950/80 px-3 py-2 rounded-2xl border-2 border-rose-500 flex items-center justify-center gap-2 text-xs font-black text-rose-300 transition-all";
-                    stepCam.innerHTML = `<span>❌</span> <span>1. Akses Kamera Ditolak / Tidak Tersedia</span>`;
-                }
-                if (statusBox) statusBox.classList.remove('hidden');
-                const errMsgEl = document.getElementById('camera-error-msg');
-                if (errMsgEl) {
-                    errMsgEl.innerHTML = `
-                        <p class="font-black text-rose-200 mb-1">🔒 Izin Kamera Diblokir oleh Browser / Chrome Android:</p>
-                        <ol class="list-decimal list-inside space-y-1 text-[11px] text-rose-200">
-                            <li>Ketuk ikon <b>Gembok (🔒)</b> atau <b>Setelan Situs</b> di sebelah alamat URL atas.</li>
-                            <li>Pilih menu <b>Izin (Permissions)</b> ➔ <b>Kamera (Camera)</b>.</li>
-                            <li>Ubah menjadi <b>Izinkan (Allow)</b>.</li>
-                            <li>Tekan tombol <b>🔄 Coba Lagi Akses Kamera</b> di bawah ini, atau langsung pilih <b>Mode Touch Screen</b>.</li>
-                        </ol>
-                    `;
-                }
+                loadingOverlay.classList.add('hidden');
+                statusBox.classList.remove('hidden');
+                stepCam.className = "mb-3 bg-rose-950/80 px-3 py-2 rounded-2xl border-2 border-rose-500/60 flex items-center justify-center gap-2 text-xs font-black text-rose-300 transition-all";
+                stepCam.innerHTML = `<span>❌</span> <span>Kamera Tidak Dapat Diakses</span>`;
+                document.getElementById('camera-error-msg').innerHTML =
+                    `⚠️ <b>Gagal Mengaktifkan Kamera:</b> ${err.message || 'Izin kamera ditolak atau kamera sedang dipakai aplikasi lain.'}<br><br>` +
+                    `💡 Pastikan izin kamera di browser sudah diizinkan, atau gunakan <b>Mode Touch Screen</b>.`;
             }
         }
 
         function renderCameraSetupPreviews() {
-            const vw = videoElement.videoWidth || 640;
-            const vh = videoElement.videoHeight || 480;
+            if (videoElement.readyState < 2) return;
 
             if (state.gameMode === 'solo') {
                 const pCanvas = document.getElementById('camera-preview-canvas');
                 if (!pCanvas) return;
                 const pCtx = pCanvas.getContext('2d');
-                const pw = pCanvas.width;
-                const ph = pCanvas.height;
-
-                pCtx.clearRect(0, 0, pw, ph);
                 pCtx.save();
-                pCtx.translate(pw, 0);
+                pCtx.translate(pCanvas.width, 0);
                 pCtx.scale(-1, 1);
-                pCtx.drawImage(videoElement, 0, 0, pw, ph);
+                pCtx.drawImage(videoElement, 0, 0, pCanvas.width, pCanvas.height);
                 pCtx.restore();
 
-                // Gambar cincin penangkap pada tangan yang terdeteksi
-                state.handCursors.forEach(c => {
-                    const px = (c.x / canvas.width) * pw;
-                    const py = (c.y / canvas.height) * ph;
+                for (const c of state.handCursors) {
+                    const px = (c.x / canvas.width) * pCanvas.width;
+                    const py = (c.y / canvas.height) * pCanvas.height;
                     pCtx.save();
                     pCtx.strokeStyle = '#4ade80';
-                    pCtx.lineWidth = 5;
-                    pCtx.shadowColor = '#4ade80';
-                    pCtx.shadowBlur = 15;
+                    pCtx.lineWidth = 4;
                     pCtx.beginPath();
-                    pCtx.arc(px, py, 34, 0, Math.PI * 2);
+                    pCtx.arc(px, py, 26, 0, Math.PI * 2);
                     pCtx.stroke();
                     pCtx.fillStyle = 'rgba(74, 222, 128, 0.35)';
                     pCtx.fill();
                     pCtx.restore();
-                });
+                }
             } else {
-                // Mode Battle: Render potongan sisi kiri ke #camera-preview-left & sisi kanan ke #camera-preview-right
-                const cLeft = document.getElementById('camera-preview-left');
-                const cRight = document.getElementById('camera-preview-right');
-                if (cLeft) {
-                    const ctxL = cLeft.getContext('2d');
-                    const pw = cLeft.width;
-                    const ph = cLeft.height;
-                    ctxL.clearRect(0, 0, pw, ph);
-                    ctxL.save();
-                    ctxL.translate(pw, 0);
-                    ctxL.scale(-1, 1);
-                    ctxL.drawImage(videoElement, vw / 2, 0, vw / 2, vh, 0, 0, pw, ph);
-                    ctxL.restore();
+                const lCanvas = document.getElementById('camera-preview-left');
+                const rCanvas = document.getElementById('camera-preview-right');
+                if (!lCanvas || !rCanvas) return;
 
-                    state.handCursors.forEach(c => {
-                        if (c.x < canvas.width / 2) {
-                            const px = (c.x / (canvas.width / 2)) * pw;
-                            const py = (c.y / canvas.height) * ph;
-                            ctxL.save();
-                            ctxL.strokeStyle = '#38bdf8';
-                            ctxL.lineWidth = 4;
-                            ctxL.beginPath();
-                            ctxL.arc(px, py, 28, 0, Math.PI * 2);
-                            ctxL.stroke();
-                            ctxL.fillStyle = 'rgba(56, 189, 248, 0.35)';
-                            ctxL.fill();
-                            ctxL.restore();
-                        }
-                    });
+                const lCtx = lCanvas.getContext('2d');
+                const rCtx = rCanvas.getContext('2d');
+                const vw = videoElement.videoWidth || 640;
+                const vh = videoElement.videoHeight || 480;
+
+                // Sisi Kiri Layar (setelah mirror, berasal dari separuh kanan video asli)
+                lCtx.save();
+                lCtx.translate(lCanvas.width, 0);
+                lCtx.scale(-1, 1);
+                lCtx.drawImage(videoElement, vw / 2, 0, vw / 2, vh, 0, 0, lCanvas.width, lCanvas.height);
+                lCtx.restore();
+
+                for (const c of state.p1.cursors) {
+                    const px = (c.x / (canvas.width / 2)) * lCanvas.width;
+                    const py = (c.y / canvas.height) * lCanvas.height;
+                    lCtx.save();
+                    lCtx.strokeStyle = '#38bdf8';
+                    lCtx.lineWidth = 4;
+                    lCtx.beginPath();
+                    lCtx.arc(px, py, 24, 0, Math.PI * 2);
+                    lCtx.stroke();
+                    lCtx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+                    lCtx.fill();
+                    lCtx.restore();
                 }
 
-                if (cRight) {
-                    const ctxR = cRight.getContext('2d');
-                    const pw = cRight.width;
-                    const ph = cRight.height;
-                    ctxR.clearRect(0, 0, pw, ph);
-                    ctxR.save();
-                    ctxR.translate(pw, 0);
-                    ctxR.scale(-1, 1);
-                    ctxR.drawImage(videoElement, 0, 0, vw / 2, vh, 0, 0, pw, ph);
-                    ctxR.restore();
+                // Sisi Kanan Layar (setelah mirror, berasal dari separuh kiri video asli)
+                rCtx.save();
+                rCtx.translate(rCanvas.width, 0);
+                rCtx.scale(-1, 1);
+                rCtx.drawImage(videoElement, 0, 0, vw / 2, vh, 0, 0, rCanvas.width, rCanvas.height);
+                rCtx.restore();
 
-                    state.handCursors.forEach(c => {
-                        if (c.x >= canvas.width / 2) {
-                            const px = ((c.x - canvas.width / 2) / (canvas.width / 2)) * pw;
-                            const py = (c.y / canvas.height) * ph;
-                            ctxR.save();
-                            ctxR.strokeStyle = '#facc15';
-                            ctxR.lineWidth = 4;
-                            ctxR.beginPath();
-                            ctxR.arc(px, py, 28, 0, Math.PI * 2);
-                            ctxR.stroke();
-                            ctxR.fillStyle = 'rgba(250, 204, 21, 0.35)';
-                            ctxR.fill();
-                            ctxR.restore();
-                        }
-                    });
+                for (const c of state.p2.cursors) {
+                    const px = ((c.x - canvas.width / 2) / (canvas.width / 2)) * rCanvas.width;
+                    const py = (c.y / canvas.height) * rCanvas.height;
+                    rCtx.save();
+                    rCtx.strokeStyle = '#fbbf24';
+                    rCtx.lineWidth = 4;
+                    rCtx.beginPath();
+                    rCtx.arc(px, py, 24, 0, Math.PI * 2);
+                    rCtx.stroke();
+                    rCtx.fillStyle = 'rgba(251, 191, 36, 0.35)';
+                    rCtx.fill();
+                    rCtx.restore();
                 }
             }
         }
 
         function onHandResults(results) {
             state.handCursors = [];
-            if (results && results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
+            state.p1.cursors = [];
+            state.p2.cursors = [];
+
+            if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
                 for (const landmarks of results.multiHandLandmarks) {
                     const wrist = landmarks[0];
                     const indexBase = landmarks[5];
                     const pinkyBase = landmarks[17];
                     const rawX = (wrist.x + indexBase.x + pinkyBase.x) / 3;
                     const rawY = (wrist.y + indexBase.y + pinkyBase.y) / 3;
-                    state.handCursors.push({ x: (1 - rawX) * canvas.width, y: rawY * canvas.height });
+
+                    const screenX = (1 - rawX) * canvas.width;
+                    const screenY = rawY * canvas.height;
+                    const point = { x: screenX, y: screenY };
+
+                    state.handCursors.push(point);
+
+                    if (screenX < canvas.width / 2) {
+                        if (!state.isPlaying || state.p1.alive) {
+                            state.p1.cursors.push(point);
+                        }
+                    } else {
+                        if (!state.isPlaying || state.p2.alive) {
+                            state.p2.cursors.push(point);
+                        }
+                    }
                 }
             }
 
-            // Cek kesiapan tangan pada Halaman Aktivasi Sensor & langsung buka Halaman Permainan jika siap
-            if (state.screen === 'camera-setup' && isCameraActive) {
+            // Pembaruan Status & Otomatis Buka Halaman Permainan Saat Tangan Siap
+            if (state.isCameraSettingUp && !state.autoStartTriggered) {
+                const confirmBtn = document.getElementById('btn-confirm-start-game');
+
                 if (state.gameMode === 'solo') {
-                    const stepSensor = document.getElementById('cam-step-sensor');
                     if (state.handCursors.length > 0) {
-                        if (stepSensor) {
-                            stepSensor.className = "mb-3 bg-emerald-950/80 px-3 py-2 rounded-2xl border-2 border-emerald-400 flex items-center justify-center gap-2 text-xs font-black text-emerald-300 transition-all";
-                            stepSensor.innerHTML = `<span>✅</span> <span>2. Tangan Pemain Siap! Membuka Halaman Permainan...</span>`;
+                        state.sensorReadySolo = true;
+                        const stepSolo = document.getElementById('cam-step-sensor');
+                        if (stepSolo) {
+                            stepSolo.className = "mb-3 bg-emerald-950/80 px-3 py-2 rounded-2xl border-2 border-emerald-400 flex items-center justify-center gap-2 text-xs font-black text-emerald-300 transition-all";
+                            stepSolo.innerHTML = `<span>✅</span> <span>2. Tangan Pemain Siap! Membuka Permainan...</span>`;
                         }
-                        if (!hasPlayedHandDetectedSound) {
-                            hasPlayedHandDetectedSound = true;
-                            audio.playFanfare();
-                        }
-                        if (!isAutoLaunchingSolo) {
-                            isAutoLaunchingSolo = true;
-                            setTimeout(() => {
-                                if (state.screen === 'camera-setup' && isCameraActive && state.gameMode === 'solo') {
-                                    state.useMouse = false;
-                                    const trackingText = document.getElementById('hud-tracking-text');
-                                    if (trackingText) {
-                                        trackingText.innerText = "Hand Tracking Aktif (Gunakan Tangan)";
-                                    }
-                                    bootGameplay();
-                                }
-                            }, 700);
-                        }
-                    } else if (!isAutoLaunchingSolo && stepSensor) {
-                        stepSensor.className = "mb-3 bg-slate-900/90 px-3 py-2 rounded-2xl border-2 border-slate-700 flex items-center justify-center gap-2 text-xs font-black text-slate-400 transition-all";
-                        stepSensor.innerHTML = `<span>🖐️</span> <span>2. Menunggu Deteksi Tangan Pemain</span>`;
-                    }
-                } else {
-                    // Mode Battle: Cek Tangan Pemain 1 (Kiri) dan Tangan Pemain 2 (Kanan)
-                    const halfW = canvas.width / 2;
-                    let leftHands = 0;
-                    let rightHands = 0;
-                    for (const c of state.handCursors) {
-                        if (c.x < halfW) leftHands++;
-                        else rightHands++;
-                    }
+                        confirmBtn.disabled = false;
+                        confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
 
-                    const stepLeft = document.getElementById('cam-step-sensor-left');
-                    const stepRight = document.getElementById('cam-step-sensor-right');
-                    const battleHint = document.getElementById('preview-battle-hint');
-
-                    if (stepLeft) {
-                        if (leftHands > 0) {
-                            stepLeft.className = "mb-2 bg-cyan-950/80 px-2 py-1.5 rounded-xl border border-cyan-400 text-[10px] sm:text-xs font-black text-cyan-300 transition-all";
-                            stepLeft.innerText = "✅ Tangan Pemain 1 Siap!";
-                            if (!hasPlayedLeftHandSound) { hasPlayedLeftHandSound = true; audio.playCatchPop(); }
-                        } else {
-                            stepLeft.className = "mb-2 bg-slate-950/90 px-2 py-1.5 rounded-xl border border-slate-700 text-[10px] sm:text-xs font-black text-slate-400 transition-all";
-                            stepLeft.innerText = "🖐️ Menunggu Tangan Pemain 1";
-                        }
-                    }
-
-                    if (stepRight) {
-                        if (rightHands > 0) {
-                            stepRight.className = "mb-2 bg-amber-950/80 px-2 py-1.5 rounded-xl border border-amber-400 text-[10px] sm:text-xs font-black text-amber-300 transition-all";
-                            stepRight.innerText = "✅ Tangan Pemain 2 Siap!";
-                            if (!hasPlayedRightHandSound) { hasPlayedRightHandSound = true; audio.playCatchPop(); }
-                        } else {
-                            stepRight.className = "mb-2 bg-slate-950/90 px-2 py-1.5 rounded-xl border border-slate-700 text-[10px] sm:text-xs font-black text-slate-400 transition-all";
-                            stepRight.innerText = "🖐️ Menunggu Tangan Pemain 2";
-                        }
-                    }
-
-                    if (leftHands > 0 && rightHands > 0 && !isAutoLaunchingBattle) {
-                        isAutoLaunchingBattle = true;
-                        if (battleHint) {
-                            battleHint.innerText = "🔥 Tangan Pemain 1 & Tangan Pemain 2 Siap! Membuka Halaman Permainan...";
-                            battleHint.className = "mt-2 text-xs font-black text-emerald-300 animate-pulse";
-                        }
-                        audio.playFanfare();
+                        state.autoStartTriggered = true;
+                        state.useMouse = false;
                         setTimeout(() => {
-                            if (state.screen === 'camera-setup' && isCameraActive && state.gameMode === 'battle') {
-                                state.useMouse = false;
-                                const trackingText = document.getElementById('hud-tracking-text');
-                                if (trackingText) {
-                                    trackingText.innerText = "Battle WebCam: Pemain 1 vs Pemain 2";
-                                }
+                            if (state.isCameraSettingUp) {
+                                state.isCameraSettingUp = false;
                                 bootGameplay();
                             }
-                        }, 700);
-                    } else if (battleHint && !isAutoLaunchingBattle) {
-                        battleHint.innerText = "👋 Tunjukkan Tangan Pemain 1 & Tangan Pemain 2 di depan kamera untuk langsung mulai!";
-                        battleHint.className = "mt-2 text-[11px] font-bold text-amber-200";
+                        }, 350);
+                    }
+                } else {
+                    const stepLeft = document.getElementById('cam-step-sensor-left');
+                    const stepRight = document.getElementById('cam-step-sensor-right');
+
+                    if (state.p1.cursors.length > 0) {
+                        state.sensorReadyLeft = true;
+                        if (stepLeft) {
+                            stepLeft.className = "mb-2 bg-cyan-950/90 px-2 py-1.5 rounded-xl border border-cyan-400 text-[10px] sm:text-xs font-black text-cyan-300 transition-all";
+                            stepLeft.innerHTML = `✅ Tangan Pemain 1 Siap!`;
+                        }
+                    }
+
+                    if (state.p2.cursors.length > 0) {
+                        state.sensorReadyRight = true;
+                        if (stepRight) {
+                            stepRight.className = "mb-2 bg-amber-950/90 px-2 py-1.5 rounded-xl border border-amber-400 text-[10px] sm:text-xs font-black text-amber-300 transition-all";
+                            stepRight.innerHTML = `✅ Tangan Pemain 2 Siap!`;
+                        }
+                    }
+
+                    if (state.sensorReadyLeft && state.sensorReadyRight) {
+                        confirmBtn.disabled = false;
+                        confirmBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                        state.autoStartTriggered = true;
+                        state.useMouse = false;
+                        setTimeout(() => {
+                            if (state.isCameraSettingUp) {
+                                state.isCameraSettingUp = false;
+                                bootGameplay();
+                            }
+                        }, 350);
                     }
                 }
             }
@@ -1584,232 +1588,187 @@
         function enableMouseFallback() {
             stopCameraStream();
             state.useMouse = true;
-            state.touchCursors = [];
-            state.isMouseDown = false;
-            const trackingText = document.getElementById('hud-tracking-text');
-            if (trackingText) {
-                trackingText.innerText = state.gameMode === 'battle'
-                    ? "Battle Touch Screen: Sentuh Sisi Kiri (Pemain 1) & Kanan (Pemain 2)"
-                    : "Mode Touch Screen Aktif (Sentuh Layar untuk Menangkap)";
-            }
+            state.isPointerActive = false;
+            state.mousePos = { x: -1000, y: -1000 };
+            state.p1.touchPos = null;
+            state.p2.touchPos = null;
             bootGameplay();
         }
 
-        // Kontrol Sentuh Multi-Touch (Mendukung hingga 2 pemain sekaligus, penangkap hilang saat jari diangkat)
-        function updateTouchList(touchList) {
-            const list = [];
-            const maxTouches = Math.min(touchList.length, 2);
-            for (let i = 0; i < maxTouches; i++) {
-                const t = touchList[i];
-                list.push({
-                    id: t.identifier,
-                    x: t.clientX,
-                    y: t.clientY,
-                    slot: i
-                });
-            }
-            state.touchCursors = list;
-        }
+        // --- 9. KONTROL SENTUH LAYAR (HILANG SAAT TIDAK DISENTUH) & MULTI-TOUCH ---
+        function updateTouchesFromEvent(e) {
+            if (!state.useMouse || !state.isPlaying || state.isPaused) return;
+            state.lastTouchTime = Date.now();
 
-        canvas.addEventListener('touchstart', (e) => {
-            if (!state.useMouse || !state.isPlaying) return;
-            updateTouchList(e.touches);
-        }, { passive: true });
-
-        canvas.addEventListener('touchmove', (e) => {
-            if (!state.useMouse || !state.isPlaying) return;
-            updateTouchList(e.touches);
-        }, { passive: true });
-
-        canvas.addEventListener('touchend', (e) => {
-            if (!state.useMouse) return;
-            updateTouchList(e.touches);
-        }, { passive: true });
-
-        canvas.addEventListener('touchcancel', (e) => {
-            if (!state.useMouse) return;
-            updateTouchList(e.touches);
-        }, { passive: true });
-
-        // Dukungan Klik & Tahan Mouse di Desktop saat Mode Touch Screen
-        canvas.addEventListener('mousedown', (e) => {
-            if (!state.useMouse || !state.isPlaying) return;
-            state.isMouseDown = true;
-            state.mousePos = { x: e.clientX, y: e.clientY };
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (state.useMouse && state.isMouseDown) {
-                state.mousePos = { x: e.clientX, y: e.clientY };
-            }
-        });
-
-        window.addEventListener('mouseup', () => {
-            if (state.useMouse) {
-                state.isMouseDown = false;
+            const touches = e.touches;
+            if (!touches || touches.length === 0) {
+                state.isPointerActive = false;
                 state.mousePos = { x: -1000, y: -1000 };
-            }
-        });
-
-        function getActiveCursors() {
-            const halfW = canvas.width / 2;
-
-            if (!state.useMouse) {
-                const cursors = [];
-                state.handCursors.forEach((c, idx) => {
-                    if (state.gameMode === 'battle') {
-                        const isLeft = c.x < halfW;
-                        if (isLeft && !state.p1.alive) return;
-                        if (!isLeft && !state.p2.alive) return;
-                        cursors.push({
-                            x: c.x,
-                            y: c.y,
-                            player: isLeft ? 1 : 2,
-                            label: isLeft ? '🖐️ PEMAIN 1' : '🖐️ PEMAIN 2',
-                            color: isLeft ? '#38bdf8' : '#facc15'
-                        });
-                    } else {
-                        cursors.push({
-                            x: c.x,
-                            y: c.y,
-                            player: 1,
-                            label: idx === 0 ? '🖐️ PENANGKAP' : '🖐️ TANGAN 2',
-                            color: idx === 0 ? '#38bdf8' : '#facc15'
-                        });
-                    }
-                });
-                return cursors;
+                state.p1.touchPos = null;
+                state.p2.touchPos = null;
+                return;
             }
 
-            // Mode Touch Screen: Penangkap hanya muncul saat layar disentuh atau mouse ditekan
-            const active = [];
-            if (state.touchCursors.length > 0) {
-                state.touchCursors.forEach((t, idx) => {
-                    if (state.gameMode === 'battle') {
-                        const isLeft = t.x < halfW;
-                        if (isLeft && !state.p1.alive) return;
-                        if (!isLeft && !state.p2.alive) return;
-                        active.push({
-                            x: t.x,
-                            y: t.y,
-                            player: isLeft ? 1 : 2,
-                            label: isLeft ? '🖐️ PEMAIN 1' : '🖐️ PEMAIN 2',
-                            color: isLeft ? '#38bdf8' : '#facc15'
-                        });
+            if (state.gameMode === 'solo') {
+                const t = touches[0];
+                state.isPointerActive = true;
+                state.mousePos = { x: t.clientX, y: t.clientY };
+            } else {
+                let foundP1 = null;
+                let foundP2 = null;
+                const halfW = canvas.width / 2;
+
+                for (let i = 0; i < touches.length; i++) {
+                    const t = touches[i];
+                    if (t.clientX < halfW) {
+                        if (state.p1.alive && !foundP1) {
+                            foundP1 = { x: t.clientX, y: t.clientY };
+                        }
                     } else {
-                        const isP1 = idx === 0;
-                        active.push({
-                            x: t.x,
-                            y: t.y,
-                            player: isP1 ? 1 : 2,
-                            label: isP1 ? '🖐️ PEMAIN 1' : '🖐️ PEMAIN 2',
-                            color: isP1 ? '#38bdf8' : '#facc15'
-                        });
-                    }
-                });
-            } else if (state.isMouseDown) {
-                const isLeft = state.mousePos.x < halfW;
-                if (state.gameMode === 'battle') {
-                    if ((isLeft && !state.p1.alive) || (!isLeft && !state.p2.alive)) {
-                        return active;
+                        if (state.p2.alive && !foundP2) {
+                            foundP2 = { x: t.clientX, y: t.clientY };
+                        }
                     }
                 }
-                active.push({
-                    x: state.mousePos.x,
-                    y: state.mousePos.y,
-                    player: state.gameMode === 'battle' ? (isLeft ? 1 : 2) : 1,
-                    label: state.gameMode === 'battle'
-                        ? (isLeft ? '🖐️ PEMAIN 1' : '🖐️ PEMAIN 2')
-                        : '🖐️ PEMAIN 1',
-                    color: (state.gameMode === 'battle' && !isLeft) ? '#facc15' : '#38bdf8'
-                });
+                state.p1.touchPos = foundP1;
+                state.p2.touchPos = foundP2;
             }
-            return active;
         }
 
-        function updateBattleDeadOverlays() {
-            const overlayP1 = document.getElementById('battle-dead-overlay-p1');
-            const overlayP2 = document.getElementById('battle-dead-overlay-p2');
-            const isBattle = state.gameMode === 'battle' && state.isPlaying;
+        window.addEventListener('touchstart', (e) => {
+            updateTouchesFromEvent(e);
+        }, { passive: true });
 
-            if (overlayP1) {
-                const showP1 = isBattle && !state.p1.alive;
-                overlayP1.classList.toggle('hidden', !showP1);
-                overlayP1.classList.toggle('flex', showP1);
+        window.addEventListener('touchmove', (e) => {
+            updateTouchesFromEvent(e);
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+            updateTouchesFromEvent(e);
+        }, { passive: true });
+
+        window.addEventListener('touchcancel', (e) => {
+            updateTouchesFromEvent(e);
+        }, { passive: true });
+
+        function updateMouseFromEvent(e, isDown) {
+            if (!state.useMouse || !state.isPlaying || state.isPaused) return;
+            // Abaikan event mouse simulasi browser segera setelah touch screen dilepas
+            if (Date.now() - state.lastTouchTime < 500) return;
+
+            if (!isDown) {
+                state.isPointerActive = false;
+                state.mousePos = { x: -1000, y: -1000 };
+                state.p1.touchPos = null;
+                state.p2.touchPos = null;
+                return;
             }
-            if (overlayP2) {
-                const showP2 = isBattle && !state.p2.alive;
-                overlayP2.classList.toggle('hidden', !showP2);
-                overlayP2.classList.toggle('flex', showP2);
+
+            if (state.gameMode === 'solo') {
+                state.isPointerActive = true;
+                state.mousePos = { x: e.clientX, y: e.clientY };
+            } else {
+                const halfW = canvas.width / 2;
+                if (e.clientX < halfW) {
+                    state.p1.touchPos = state.p1.alive ? { x: e.clientX, y: e.clientY } : null;
+                    state.p2.touchPos = null;
+                } else {
+                    state.p2.touchPos = state.p2.alive ? { x: e.clientX, y: e.clientY } : null;
+                    state.p1.touchPos = null;
+                }
             }
+        }
+
+        window.addEventListener('mousedown', (e) => updateMouseFromEvent(e, true));
+        window.addEventListener('mousemove', (e) => updateMouseFromEvent(e, e.buttons === 1));
+        window.addEventListener('mouseup', (e) => updateMouseFromEvent(e, false));
+        window.addEventListener('mouseleave', (e) => updateMouseFromEvent(e, false));
+
+        // --- 10. LOGIKA PERMAINAN (KLASIK & BATTLE) ---
+        function setMission() {
+            const catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
+            const chosen = SHAPES[catKey];
+            const targetCount = Math.floor(Math.random() * 2) + 2;
+
+            if (state.gameMode === 'solo') {
+                state.missionCat = chosen;
+                state.missionProgress = 0;
+                state.missionTarget = targetCount;
+
+                document.getElementById('hud-mission-title').innerText = `TANGKAP ${chosen.name}`;
+                document.getElementById('hud-mission-count').innerText = `0/${targetCount}`;
+                document.getElementById('hud-mission-badge').style.borderColor = chosen.color;
+            } else {
+                state.battleMissionCat = chosen;
+                state.battleMissionTarget = targetCount;
+                state.p1.missionProgress = 0;
+                state.p2.missionProgress = 0;
+
+                document.getElementById('hud-battle-mission-title').innerText = `TANGKAP ${chosen.name}`;
+                document.getElementById('hud-battle-mission-badge').style.borderColor = chosen.color;
+                renderBattleHUD();
+            }
+
+            voice.speak(`Misi baru: Tangkap ${chosen.name}!`, false);
         }
 
         function renderLives() {
-            const livesEl = document.getElementById('hud-lives');
-            if (!livesEl) return;
             let html = '';
             for (let i = 0; i < CONFIG[state.difficulty].maxLives; i++) {
                 html += i < state.lives ? '❤️' : '🖤';
             }
-            livesEl.innerHTML = html;
+            document.getElementById('hud-lives').innerHTML = html;
         }
 
         function renderBattleHUD() {
             const maxLives = CONFIG[state.difficulty].maxLives;
-            const p1Score = document.getElementById('hud-p1-score');
-            const p2Score = document.getElementById('hud-p2-score');
-            const p1Lives = document.getElementById('hud-p1-lives');
-            const p2Lives = document.getElementById('hud-p2-lives');
-            const p1Mission = document.getElementById('hud-p1-mission');
-            const p2Mission = document.getElementById('hud-p2-mission');
 
-            if (p1Score) p1Score.innerText = state.p1.score;
-            if (p2Score) p2Score.innerText = state.p2.score;
-            if (p1Mission) p1Mission.innerText = `${state.p1.missionProgress}/${state.missionTarget}`;
-            if (p2Mission) p2Mission.innerText = `${state.p2.missionProgress}/${state.missionTarget}`;
+            let p1LivesHtml = '';
+            for (let i = 0; i < maxLives; i++) p1LivesHtml += i < state.p1.lives ? '❤️' : '🖤';
+            document.getElementById('hud-p1-lives').innerHTML = p1LivesHtml;
+            document.getElementById('hud-p1-score').innerText = state.p1.score;
+            document.getElementById('hud-p1-mission').innerText = `${state.p1.missionProgress}/${state.battleMissionTarget}`;
 
-            if (p1Lives) {
-                let h1 = '';
-                for (let i = 0; i < maxLives; i++) h1 += i < state.p1.lives ? '❤️' : '🖤';
-                p1Lives.innerHTML = h1;
+            let p2LivesHtml = '';
+            for (let i = 0; i < maxLives; i++) p2LivesHtml += i < state.p2.lives ? '❤️' : '🖤';
+            document.getElementById('hud-p2-lives').innerHTML = p2LivesHtml;
+            document.getElementById('hud-p2-score').innerText = state.p2.score;
+            document.getElementById('hud-p2-mission').innerText = `${state.p2.missionProgress}/${state.battleMissionTarget}`;
+        }
+
+        function eliminateBattlePlayer(playerKey) {
+            if (playerKey === 'p1' && state.p1.alive) {
+                state.p1.alive = false;
+                state.p1.cursors = [];
+                state.p1.touchPos = null;
+                state.shapes = state.shapes.filter(s => s && s.side !== 'p1');
+                const ov1 = document.getElementById('battle-dead-overlay-p1');
+                ov1.classList.remove('hidden');
+                ov1.classList.add('flex');
+                voice.speak("Pemain satu kehabisan nyawa!", true);
+            } else if (playerKey === 'p2' && state.p2.alive) {
+                state.p2.alive = false;
+                state.p2.cursors = [];
+                state.p2.touchPos = null;
+                state.shapes = state.shapes.filter(s => s && s.side !== 'p2');
+                const ov2 = document.getElementById('battle-dead-overlay-p2');
+                ov2.classList.remove('hidden');
+                ov2.classList.add('flex');
+                voice.speak("Pemain dua kehabisan nyawa!", true);
             }
-            if (p2Lives) {
-                let h2 = '';
-                for (let i = 0; i < maxLives; i++) h2 += i < state.p2.lives ? '❤️' : '🖤';
-                p2Lives.innerHTML = h2;
+
+            if (!state.p1.alive && !state.p2.alive) {
+                finishGame();
             }
         }
 
-        function setMission() {
-            const catKey = SHAPE_KEYS[Math.floor(Math.random() * SHAPE_KEYS.length)];
-            state.missionCat = SHAPES[catKey];
-            state.missionProgress = 0;
-            state.p1.missionProgress = 0;
-            state.p2.missionProgress = 0;
-            state.missionTarget = Math.floor(Math.random() * 2) + 2;
-
-            const soloTitle = document.getElementById('hud-mission-title');
-            const soloCount = document.getElementById('hud-mission-count');
-            const soloBadge = document.getElementById('hud-mission-badge');
-            if (soloTitle) soloTitle.innerText = `TANGKAP ${state.missionCat.name}`;
-            if (soloCount) soloCount.innerText = `0/${state.missionTarget}`;
-            if (soloBadge) soloBadge.style.borderColor = state.missionCat.color;
-
-            const battleTitle = document.getElementById('hud-battle-mission-title');
-            const battleBadge = document.getElementById('hud-battle-mission-badge');
-            if (battleTitle) battleTitle.innerText = `TANGKAP ${state.missionCat.name}`;
-            if (battleBadge) battleBadge.style.borderColor = state.missionCat.color;
-
-            renderBattleHUD();
-            voice.speak(`Misi baru: Tangkap ${state.missionCat.name}!`, false);
-        }
-
-        function processCatch(shape, index, cursorX, cursorY) {
+        function processCatch(shape, index, cursorX, cursorY, playerKey = 'solo') {
             state.shapes.splice(index, 1);
-            const isTarget = shape.category.name === state.missionCat.name;
             const config = CONFIG[state.difficulty];
 
-            if (state.gameMode === 'solo') {
+            if (playerKey === 'solo') {
+                const isTarget = shape.category.name === state.missionCat.name;
+
                 if (isTarget) {
                     audio.playCatchPop();
                     state.score += shape.points;
@@ -1817,16 +1776,15 @@
                     state.correctCatches++;
                     triggerExplosion(cursorX, cursorY, shape.color);
                     state.texts.push(new PopText(cursorX, cursorY, `+${shape.points}`, '#fde047'));
-                    const soloCount = document.getElementById('hud-mission-count');
-                    if (soloCount) soloCount.innerText = `${state.missionProgress}/${state.missionTarget}`;
+                    document.getElementById('hud-mission-count').innerText = `${state.missionProgress}/${state.missionTarget}`;
 
                     if (state.missionProgress >= state.missionTarget) {
                         audio.playFanfare();
-                        voice.speak("Misi selesai! Dapatkan bonus tiga puluh poin!", true);
+                        voice.speak("Misi selesai! Bonus tiga puluh poin!", true);
                         state.score += 30;
                         state.texts.push(new PopText(canvas.width / 2, canvas.height / 3, `MISI SELESAI! +30`, '#4ade80'));
                         triggerExplosion(canvas.width / 2, canvas.height / 3, '#4ade80');
-                        setTimeout(() => { if (state.isPlaying) setMission(); }, 1200);
+                        setTimeout(() => { if (state.isPlaying) setMission(); }, 1000);
                     } else {
                         const praise = PRAISE_PHRASES[Math.floor(Math.random() * PRAISE_PHRASES.length)];
                         voice.speak(praise, true);
@@ -1843,110 +1801,123 @@
                     }
                     state.lives--;
                     renderLives();
-                    if (state.lives <= 0) finishGame();
+                    if (state.lives <= 0) {
+                        document.getElementById('hud-score').innerText = state.score;
+                        finishGame();
+                        return;
+                    }
                 }
 
-                const scoreEl = document.getElementById('hud-score');
-                if (scoreEl) scoreEl.innerText = state.score;
+                document.getElementById('hud-score').innerText = state.score;
             } else {
-                const isP1 = shape.side === 'left';
-                const playerObj = isP1 ? state.p1 : state.p2;
-                if (!playerObj.alive) return;
+                // MODE BATTLE (p1 atau p2)
+                const player = playerKey === 'p1' ? state.p1 : state.p2;
+                if (!player.alive) return;
+
+                const isTarget = shape.category.name === state.battleMissionCat.name;
+                const centerX = playerKey === 'p1' ? canvas.width * 0.25 : canvas.width * 0.75;
 
                 if (isTarget) {
                     audio.playCatchPop();
-                    playerObj.score += shape.points;
-                    playerObj.missionProgress++;
-                    playerObj.correct++;
+                    player.score += shape.points;
+                    player.missionProgress++;
+                    player.correctCatches++;
                     triggerExplosion(cursorX, cursorY, shape.color);
-                    state.texts.push(new PopText(cursorX, cursorY, `+${shape.points}`, isP1 ? '#38bdf8' : '#fde047'));
+                    state.texts.push(new PopText(cursorX, cursorY, `+${shape.points}`, '#fde047'));
 
-                    if (playerObj.missionProgress >= state.missionTarget) {
+                    if (player.missionProgress >= state.battleMissionTarget) {
                         audio.playFanfare();
-                        playerObj.score += 30;
-                        const pLabel = isP1 ? 'PEMAIN 1' : 'PEMAIN 2';
-                        voice.speak(`Misi ${pLabel} selesai! Bonus tiga puluh poin!`, true);
-                        const centerX = isP1 ? canvas.width * 0.25 : canvas.width * 0.75;
-                        state.texts.push(new PopText(centerX, canvas.height / 3, `MISI ${pLabel} SELESAI! +30`, '#4ade80'));
+                        player.score += 30;
+                        const label = playerKey === 'p1' ? 'PEMAIN 1' : 'PEMAIN 2';
+                        voice.speak(`${label} menyelesaikan misi! Bonus tiga puluh poin!`, true);
+                        state.texts.push(new PopText(centerX, canvas.height / 3, `MISI SELESAI! +30`, '#4ade80'));
                         triggerExplosion(centerX, canvas.height / 3, '#4ade80');
-                        setTimeout(() => { if (state.isPlaying) setMission(); }, 1200);
+                        renderBattleHUD();
+                        setTimeout(() => { if (state.isPlaying) setMission(); }, 1000);
+                        return;
                     } else {
                         const praise = PRAISE_PHRASES[Math.floor(Math.random() * PRAISE_PHRASES.length)];
                         voice.speak(praise, true);
                     }
                 } else {
                     audio.playError();
-                    playerObj.wrong++;
+                    player.wrongCatches++;
                     const warn = WARNING_PHRASES[Math.floor(Math.random() * WARNING_PHRASES.length)];
                     voice.speak(warn, true);
                     triggerExplosion(cursorX, cursorY, '#ef4444');
                     if (config.penalty > 0) {
-                        playerObj.score = Math.max(0, playerObj.score - config.penalty);
+                        player.score = Math.max(0, player.score - config.penalty);
                         state.texts.push(new PopText(cursorX, cursorY, `-${config.penalty}`, '#ef4444'));
                     }
-                    playerObj.lives--;
-                    if (playerObj.lives <= 0) {
-                        playerObj.lives = 0;
-                        playerObj.alive = false;
-                        const deadSide = isP1 ? 'left' : 'right';
-                        state.shapes = state.shapes.filter(s => s.side !== deadSide);
-                        updateBattleDeadOverlays();
-                        if (state.p1.alive || state.p2.alive) {
-                            const deadName = isP1 ? 'Pemain 1' : 'Pemain 2';
-                            voice.speak(`${deadName} kehabisan nyawa!`, true);
-                        }
+                    player.lives--;
+                    renderBattleHUD();
+                    if (player.lives <= 0) {
+                        eliminateBattlePlayer(playerKey);
+                        return;
                     }
                 }
 
                 renderBattleHUD();
-
-                if (!state.p1.alive && !state.p2.alive) {
-                    finishGame();
-                }
             }
         }
 
         function bootGameplay() {
             audio.init();
             const config = CONFIG[state.difficulty];
-            const isBattle = state.gameMode === 'battle';
-
             state.isPlaying = true;
             state.isPaused = false;
-            state.score = 0;
-            state.lives = config.maxLives;
             state.timer = config.timeLimit;
             state.shapes = [];
             state.particles = [];
             state.texts = [];
-            state.correctCatches = 0;
-            state.wrongCatches = 0;
-            state.touchCursors = [];
-            state.isMouseDown = false;
+            state.isPointerActive = false;
+            state.mousePos = { x: -1000, y: -1000 };
 
-            state.p1 = { score: 0, lives: config.maxLives, correct: 0, wrong: 0, missionProgress: 0, alive: true };
-            state.p2 = { score: 0, lives: config.maxLives, correct: 0, wrong: 0, missionProgress: 0, alive: true };
-            updateBattleDeadOverlays();
+            // Sembunyikan overlay pemain kehabisan nyawa
+            document.getElementById('battle-dead-overlay-p1').classList.add('hidden');
+            document.getElementById('battle-dead-overlay-p1').classList.remove('flex');
+            document.getElementById('battle-dead-overlay-p2').classList.add('hidden');
+            document.getElementById('battle-dead-overlay-p2').classList.remove('flex');
+
             const hudSolo = document.getElementById('hud-solo');
             const hudBattle = document.getElementById('hud-battle');
-            if (hudSolo) {
-                hudSolo.classList.toggle('hidden', isBattle);
-                hudSolo.classList.toggle('flex', !isBattle);
-            }
-            if (hudBattle) {
-                hudBattle.classList.toggle('hidden', !isBattle);
-                hudBattle.classList.toggle('grid', isBattle);
+            const trackingText = document.getElementById('hud-tracking-text');
+
+            if (state.gameMode === 'solo') {
+                hudSolo.classList.remove('hidden');
+                hudSolo.classList.add('flex');
+                hudBattle.classList.add('hidden');
+                hudBattle.classList.remove('grid');
+
+                state.score = 0;
+                state.lives = config.maxLives;
+                state.correctCatches = 0;
+                state.wrongCatches = 0;
+
+                document.getElementById('hud-score').innerText = '0';
+                document.getElementById('hud-timer').innerText = state.timer;
+                renderLives();
+
+                trackingText.innerText = state.useMouse
+                    ? "Mode Touch Screen: Sentuh & Geser Layar!"
+                    : "Mode WebCam: Gerakkan Tanganmu!";
+            } else {
+                hudSolo.classList.add('hidden');
+                hudSolo.classList.remove('flex');
+                hudBattle.classList.remove('hidden');
+                hudBattle.classList.add('grid');
+
+                state.p1 = { score: 0, lives: config.maxLives, alive: true, missionProgress: 0, correctCatches: 0, wrongCatches: 0, cursors: [], touchPos: null };
+                state.p2 = { score: 0, lives: config.maxLives, alive: true, missionProgress: 0, correctCatches: 0, wrongCatches: 0, cursors: [], touchPos: null };
+
+                document.getElementById('hud-battle-timer').innerText = state.timer;
+                renderBattleHUD();
+
+                trackingText.innerText = state.useMouse
+                    ? "Battle Touch Screen: Sentuh Sisi Layarmu!"
+                    : "Battle WebCam: Pemain 1 vs Pemain 2";
             }
 
-            const scoreEl = document.getElementById('hud-score');
-            const timerEl = document.getElementById('hud-timer');
-            const battleTimerEl = document.getElementById('hud-battle-timer');
-            if (scoreEl) scoreEl.innerText = '0';
-            if (timerEl) timerEl.innerText = state.timer;
-            if (battleTimerEl) battleTimerEl.innerText = state.timer;
-
-            renderLives();
-            renderBattleHUD();
             setMission();
             setScreen('gameplay');
 
@@ -1954,25 +1925,34 @@
             state.timerTimer = setInterval(() => {
                 if (!state.isPlaying || state.isPaused) return;
                 state.timer--;
-                if (timerEl) timerEl.innerText = state.timer;
-                if (battleTimerEl) battleTimerEl.innerText = state.timer;
+                if (state.gameMode === 'solo') {
+                    document.getElementById('hud-timer').innerText = state.timer;
+                } else {
+                    document.getElementById('hud-battle-timer').innerText = state.timer;
+                }
                 if (state.timer <= 0) finishGame();
             }, 1000);
 
             clearInterval(state.spawnTimer);
             state.spawnTimer = setInterval(() => {
                 if (!state.isPlaying || state.isPaused) return;
-                if (isBattle) {
-                    if (state.p1.alive && state.shapes.filter(s => s.side === 'left').length < 5) {
-                        state.shapes.push(new ShapeObject(config, 'left'));
+
+                if (state.gameMode === 'solo') {
+                    if (state.shapes.length < 7) {
+                        state.shapes.push(new ShapeObject(config, 'solo'));
                     }
-                    if (state.p2.alive && state.shapes.filter(s => s.side === 'right').length < 5) {
-                        state.shapes.push(new ShapeObject(config, 'right'));
+                } else {
+                    const p1Shapes = state.shapes.filter(s => s && s.side === 'p1').length;
+                    const p2Shapes = state.shapes.filter(s => s && s.side === 'p2').length;
+
+                    if (state.p1.alive && p1Shapes < 5) {
+                        state.shapes.push(new ShapeObject(config, 'p1'));
                     }
-                } else if (state.shapes.length < 7) {
-                    state.shapes.push(new ShapeObject(config, 'all'));
+                    if (state.p2.alive && p2Shapes < 5) {
+                        state.shapes.push(new ShapeObject(config, 'p2'));
+                    }
                 }
-            }, 1200);
+            }, 1150);
 
             requestAnimationFrame(gameLoop);
         }
@@ -1981,145 +1961,109 @@
             const total = correct + wrong;
             const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
             let stars = '⭐';
-            let badge = 'Terus Berlatih! Kamu Pasti Bisa! 💪';
+            let badge = 'Coba Lagi Yuk! Pasti Lebih Hebat!';
             if (score >= 120) {
                 stars = '⭐⭐⭐';
                 badge = 'Luar Biasa! Jagoan Geometri Sejati! 🎉';
             } else if (score >= 50) {
                 stars = '⭐⭐';
-                badge = 'Hebat! Sangat Mengenal Bangun Datar! 👍';
+                badge = 'Hebat! Kamu Sangat Mengenal Bangun Datar! 👍';
             }
             return { accuracy, stars, badge };
         }
 
         function finishGame() {
             state.isPlaying = false;
-            updateBattleDeadOverlays();
             clearInterval(state.timerTimer);
             clearInterval(state.spawnTimer);
 
-            const isBattle = state.gameMode === 'battle';
             const resSolo = document.getElementById('results-solo');
             const resBattle = document.getElementById('results-battle');
-            if (resSolo) resSolo.classList.toggle('hidden', isBattle);
-            if (resBattle) resBattle.classList.toggle('hidden', !isBattle);
 
-            if (!isBattle) {
-                const evalRes = evaluatePlayerStats(state.score, state.correctCatches, state.wrongCatches);
-                const elStars = document.getElementById('res-stars');
-                const elScore = document.getElementById('res-final-score');
-                const elCorrect = document.getElementById('res-stat-correct');
-                const elWrong = document.getElementById('res-stat-wrong');
-                const elAcc = document.getElementById('res-stat-accuracy');
-                const elBadge = document.getElementById('res-badge-text');
+            if (state.gameMode === 'solo') {
+                resSolo.classList.remove('hidden');
+                resBattle.classList.add('hidden');
 
-                if (elStars) elStars.innerHTML = evalRes.stars;
-                if (elScore) elScore.innerText = state.score;
-                if (elCorrect) elCorrect.innerText = state.correctCatches;
-                if (elWrong) elWrong.innerText = state.wrongCatches;
-                if (elAcc) elAcc.innerText = `${evalRes.accuracy}%`;
-                if (elBadge) elBadge.innerText = evalRes.badge;
+                const stats = evaluatePlayerStats(state.score, state.correctCatches, state.wrongCatches);
+                document.getElementById('res-stars').innerHTML = stats.stars;
+                document.getElementById('res-final-score').innerText = state.score;
+                document.getElementById('res-stat-correct').innerText = state.correctCatches;
+                document.getElementById('res-stat-wrong').innerText = state.wrongCatches;
+                document.getElementById('res-stat-accuracy').innerText = `${stats.accuracy}%`;
+                document.getElementById('res-badge-text').innerText = stats.badge;
 
-                voice.speak(`Permainan selesai! Skor akhirmu ${state.score} poin dengan akurasi ${evalRes.accuracy} persen. ${evalRes.badge}`, true);
+                voice.speak(`Permainan selesai! Skor akhirmu ${state.score} poin dengan akurasi ${stats.accuracy} persen. ${stats.badge}`, true);
             } else {
-                const p1Eval = evaluatePlayerStats(state.p1.score, state.p1.correct, state.p1.wrong);
-                const p2Eval = evaluatePlayerStats(state.p2.score, state.p2.correct, state.p2.wrong);
+                resSolo.classList.add('hidden');
+                resBattle.classList.remove('hidden');
 
-                const winnerTitle = document.getElementById('res-battle-winner');
+                const s1 = evaluatePlayerStats(state.p1.score, state.p1.correctCatches, state.p1.wrongCatches);
+                const s2 = evaluatePlayerStats(state.p2.score, state.p2.correctCatches, state.p2.wrongCatches);
+
+                document.getElementById('res-p1-stars').innerHTML = s1.stars;
+                document.getElementById('res-p1-score').innerText = state.p1.score;
+                document.getElementById('res-p1-correct').innerText = state.p1.correctCatches;
+                document.getElementById('res-p1-wrong').innerText = state.p1.wrongCatches;
+                document.getElementById('res-p1-accuracy').innerText = `${s1.accuracy}%`;
+                document.getElementById('res-p1-badge').innerText = s1.badge;
+
+                document.getElementById('res-p2-stars').innerHTML = s2.stars;
+                document.getElementById('res-p2-score').innerText = state.p2.score;
+                document.getElementById('res-p2-correct').innerText = state.p2.correctCatches;
+                document.getElementById('res-p2-wrong').innerText = state.p2.wrongCatches;
+                document.getElementById('res-p2-accuracy').innerText = `${s2.accuracy}%`;
+                document.getElementById('res-p2-badge').innerText = s2.badge;
+
+                const winnerEl = document.getElementById('res-battle-winner');
                 const p1Rank = document.getElementById('res-p1-rank');
                 const p2Rank = document.getElementById('res-p2-rank');
 
-                let winnerVoice = "";
                 if (state.p1.score > state.p2.score) {
-                    if (winnerTitle) winnerTitle.innerText = "🏆 PEMENANG: PEMAIN 1 (KIRI)!";
-                    if (p1Rank) p1Rank.innerText = "👑 JUARA 1";
-                    if (p2Rank) p2Rank.innerText = "🥈 JUARA 2";
-                    winnerVoice = `Pertandingan selesai! Pemenangnya adalah Pemain 1 dengan skor ${state.p1.score} poin!`;
+                    winnerEl.innerText = "🏆 PEMENANG: PEMAIN 1 (KIRI)!";
+                    p1Rank.innerText = "👑 JUARA 1";
+                    p2Rank.innerText = "🥈 RUNNER UP";
+                    voice.speak(`Pertandingan selesai! Pemenangnya adalah Pemain Satu dengan skor ${state.p1.score} poin!`, true);
                 } else if (state.p2.score > state.p1.score) {
-                    if (winnerTitle) winnerTitle.innerText = "🏆 PEMENANG: PEMAIN 2 (KANAN)!";
-                    if (p1Rank) p1Rank.innerText = "🥈 JUARA 2";
-                    if (p2Rank) p2Rank.innerText = "👑 JUARA 1";
-                    winnerVoice = `Pertandingan selesai! Pemenangnya adalah Pemain 2 dengan skor ${state.p2.score} poin!`;
+                    winnerEl.innerText = "🏆 PEMENANG: PEMAIN 2 (KANAN)!";
+                    p1Rank.innerText = "🥈 RUNNER UP";
+                    p2Rank.innerText = "👑 JUARA 1";
+                    voice.speak(`Pertandingan selesai! Pemenangnya adalah Pemain Dua dengan skor ${state.p2.score} poin!`, true);
                 } else {
-                    if (winnerTitle) winnerTitle.innerText = "🤝 PERTANDINGAN SERI (DRAW)!";
-                    if (p1Rank) p1Rank.innerText = "🏅 SERI";
-                    if (p2Rank) p2Rank.innerText = "🏅 SERI";
-                    winnerVoice = `Pertandingan selesai dengan hasil seri! Keduanya meraih ${state.p1.score} poin!`;
+                    winnerEl.innerText = "🤝 PERTANDINGAN SERI!";
+                    p1Rank.innerText = "🏅 SERI";
+                    p2Rank.innerText = "🏅 SERI";
+                    voice.speak(`Pertandingan selesai dengan hasil seri! Skor kedua pemain sama-sama ${state.p1.score} poin!`, true);
                 }
-
-                const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
-                setEl('res-p1-stars', p1Eval.stars);
-                setEl('res-p1-score', state.p1.score);
-                setEl('res-p1-correct', state.p1.correct);
-                setEl('res-p1-wrong', state.p1.wrong);
-                setEl('res-p1-accuracy', `${p1Eval.accuracy}%`);
-                setEl('res-p1-badge', p1Eval.badge);
-
-                setEl('res-p2-stars', p2Eval.stars);
-                setEl('res-p2-score', state.p2.score);
-                setEl('res-p2-correct', state.p2.correct);
-                setEl('res-p2-wrong', state.p2.wrong);
-                setEl('res-p2-accuracy', `${p2Eval.accuracy}%`);
-                setEl('res-p2-badge', p2Eval.badge);
-
-                voice.speak(winnerVoice, true);
             }
 
             setScreen('results');
         }
 
-        // --- 10. MAIN RENDER LOOP ---
-        function drawBattleDivider() {
-            const midX = canvas.width / 2;
-            ctx.save();
-            ctx.strokeStyle = 'rgba(250, 204, 21, 0.75)';
-            ctx.lineWidth = 4;
-            ctx.setLineDash([14, 10]);
-            ctx.shadowColor = '#facc15';
-            ctx.shadowBlur = 15;
-            ctx.beginPath();
-            ctx.moveTo(midX, 0);
-            ctx.lineTo(midX, canvas.height);
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            // Badge VS di tengah layar
-            ctx.fillStyle = '#facc15';
-            ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.arc(midX, canvas.height / 2, 24, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.font = '900 15px Fredoka, sans-serif';
-            ctx.fillStyle = '#0f172a';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('VS', midX, canvas.height / 2);
-
-            // Overlay redup jika salah satu pemain kehabisan nyawa
-            if (!state.p1.alive) {
-                ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
-                ctx.fillRect(0, 0, midX, canvas.height);
+        // --- 11. LOOP RENDER UTAMA ---
+        function getActiveCursorsSolo() {
+            if (state.useMouse) {
+                return state.isPointerActive ? [{ x: state.mousePos.x, y: state.mousePos.y }] : [];
             }
-            if (!state.p2.alive) {
-                ctx.fillStyle = 'rgba(15, 23, 42, 0.6)';
-                ctx.fillRect(midX, 0, midX, canvas.height);
-            }
+            return state.handCursors;
+        }
 
-            ctx.restore();
+        function getActiveCursorsBattle(playerKey) {
+            const player = playerKey === 'p1' ? state.p1 : state.p2;
+            if (!player.alive) return [];
+            if (state.useMouse) {
+                return player.touchPos ? [player.touchPos] : [];
+            }
+            return player.cursors;
         }
 
         function gameLoop() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Background Luar Angkasa (Nebula Kosmik & 150 Bintang Gemerlap)
             drawNebula(ctx);
             drawStars(ctx);
 
-            // Transparansi Kamera (Menyatu dengan Latar Luar Angkasa)
-            if (isCameraActive && videoElement.readyState >= 2) {
+            // Umpan WebCam
+            if (!state.useMouse && videoElement.readyState >= 2) {
                 ctx.save();
                 ctx.translate(canvas.width, 0);
                 ctx.scale(-1, 1);
@@ -2130,15 +2074,54 @@
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
             }
 
-            if (state.gameMode === 'battle' && state.isPlaying) {
-                drawBattleDivider();
+            // Garis Pembatas Tengah Mode Battle (Garis Lurus Merah & Ikon VS)
+            if (state.isPlaying && state.gameMode === 'battle') {
+                const midX = canvas.width / 2;
+                const midY = canvas.height / 2;
+
+                ctx.save();
+                // Garis lurus vertikal berwarna merah
+                ctx.strokeStyle = '#ef4444';
+                ctx.lineWidth = 5;
+                ctx.shadowColor = '#ef4444';
+                ctx.shadowBlur = 14;
+                ctx.beginPath();
+                ctx.moveTo(midX, 0);
+                ctx.lineTo(midX, canvas.height);
+                ctx.stroke();
+
+                // Lencana Ikon VS di tengah garis
+                const badgeRadius = 26;
+                const grad = ctx.createRadialGradient(midX, midY, 4, midX, midY, badgeRadius);
+                grad.addColorStop(0, '#ef4444');
+                grad.addColorStop(1, '#991b1b');
+
+                ctx.shadowColor = 'rgba(239, 68, 68, 0.85)';
+                ctx.shadowBlur = 18;
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(midX, midY, badgeRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.lineWidth = 3.5;
+                ctx.strokeStyle = '#ffffff';
+                ctx.stroke();
+
+                // Teks VS
+                ctx.shadowBlur = 0;
+                ctx.font = '900 20px Fredoka, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = '#450a0a';
+                ctx.strokeText('VS', midX, midY + 1);
+                ctx.fillStyle = '#fde047';
+                ctx.fillText('VS', midX, midY + 1);
+                ctx.restore();
             }
 
             if (state.isPlaying) {
-                const activeCursors = getActiveCursors();
-
                 if (!state.isPaused) {
-                    // Render & Update Bangun Datar
                     for (let i = state.shapes.length - 1; i >= 0; i--) {
                         if (!state.isPlaying) break;
                         const shape = state.shapes[i];
@@ -2152,20 +2135,35 @@
                             continue;
                         }
 
-                        // Cek Tumbukan dengan Penangkap Aktif
-                        for (const c of activeCursors) {
-                            if (state.gameMode === 'battle') {
-                                if (shape.side === 'left' && (!state.p1.alive || c.player !== 1)) continue;
-                                if (shape.side === 'right' && (!state.p2.alive || c.player !== 2)) continue;
+                        if (state.gameMode === 'solo') {
+                            const cursors = getActiveCursorsSolo();
+                            for (const c of cursors) {
+                                if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
+                                    processCatch(shape, i, c.x, c.y, 'solo');
+                                    break;
+                                }
                             }
-                            if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
-                                processCatch(shape, i, c.x, c.y);
-                                break;
+                        } else {
+                            if (shape.side === 'p1' && state.p1.alive) {
+                                const cursorsP1 = getActiveCursorsBattle('p1');
+                                for (const c of cursorsP1) {
+                                    if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
+                                        processCatch(shape, i, c.x, c.y, 'p1');
+                                        break;
+                                    }
+                                }
+                            } else if (shape.side === 'p2' && state.p2.alive) {
+                                const cursorsP2 = getActiveCursorsBattle('p2');
+                                for (const c of cursorsP2) {
+                                    if (Math.hypot(c.x - shape.x, c.y - shape.y) < shape.size + 42) {
+                                        processCatch(shape, i, c.x, c.y, 'p2');
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
 
-                    // Partikel & Teks Melayang
                     for (let i = state.particles.length - 1; i >= 0; i--) {
                         const p = state.particles[i];
                         if (!p) continue;
@@ -2173,6 +2171,7 @@
                         p.draw(ctx);
                         if (p.alpha <= 0) state.particles.splice(i, 1);
                     }
+
                     for (let i = state.texts.length - 1; i >= 0; i--) {
                         const t = state.texts[i];
                         if (!t) continue;
@@ -2181,19 +2180,31 @@
                         if (t.alpha <= 0) state.texts.splice(i, 1);
                     }
                 } else {
-                    state.shapes.forEach(shape => {
+                    for (const shape of state.shapes) {
                         if (shape) shape.draw(ctx);
-                    });
+                    }
                 }
 
-                // Gambar Cincin Penangkap Aktif
-                activeCursors.forEach(c => drawHandRing(c.x, c.y, c.label, c.color));
+                // Gambar Penangkap (Hanya muncul jika tangan terdeteksi atau layar sedang disentuh)
+                if (state.gameMode === 'solo') {
+                    const cursors = getActiveCursorsSolo();
+                    cursors.forEach(c => drawHandRing(c.x, c.y, '#38bdf8', '🖐️ PENANGKAP'));
+                } else {
+                    if (state.p1.alive) {
+                        getActiveCursorsBattle('p1').forEach(c => drawHandRing(c.x, c.y, '#38bdf8', '🔵 PEMAIN 1'));
+                    }
+                    if (state.p2.alive) {
+                        getActiveCursorsBattle('p2').forEach(c => drawHandRing(c.x, c.y, '#fbbf24', '🟡 PEMAIN 2'));
+                    }
+                }
 
-                requestAnimationFrame(gameLoop);
+                if (state.isPlaying) {
+                    requestAnimationFrame(gameLoop);
+                }
             }
         }
 
-        function drawHandRing(x, y, label = '🖐️ PENANGKAP', ringColor = '#38bdf8') {
+        function drawHandRing(x, y, ringColor, labelText) {
             ctx.save();
             ctx.translate(x, y);
 
@@ -2201,32 +2212,23 @@
             ctx.shadowBlur = 20;
             ctx.strokeStyle = ringColor;
             ctx.lineWidth = 4;
-            ctx.beginPath();
-            ctx.arc(0, 0, 42, 0, Math.PI * 2);
-            ctx.stroke();
+            ctx.beginPath(); ctx.arc(0, 0, 42, 0, Math.PI * 2); ctx.stroke();
 
-            ctx.fillStyle = ringColor === '#facc15' ? 'rgba(250, 204, 21, 0.28)' : 'rgba(56, 189, 248, 0.28)';
-            ctx.beginPath();
-            ctx.arc(0, 0, 30, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillStyle = ringColor === '#fbbf24' ? 'rgba(251, 191, 36, 0.28)' : 'rgba(56, 189, 248, 0.28)';
+            ctx.beginPath(); ctx.arc(0, 0, 30, 0, Math.PI * 2); ctx.fill();
 
             ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(0, 0, 7, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
 
             ctx.font = '900 12px Fredoka, sans-serif';
             ctx.fillStyle = '#fde047';
-            ctx.strokeStyle = '#0f172a';
-            ctx.lineWidth = 3;
             ctx.textAlign = 'center';
-            ctx.strokeText(label, 0, 58);
-            ctx.fillText(label, 0, 58);
+            ctx.fillText(labelText, 0, 58);
 
             ctx.restore();
         }
 
-        // --- 11. BUTTON LISTENERS ---
+        // --- 12. EVENT LISTENERS TOMBOL ---
         function attachButtonListener(id, callback) {
             const el = document.getElementById(id);
             if (!el) return;
@@ -2259,10 +2261,10 @@
                 const mode = target.getAttribute('data-mode');
                 state.gameMode = mode;
                 target.classList.remove('border-slate-700');
-                if (mode === 'battle') {
-                    target.classList.add('border-amber-400', 'ring-2', 'ring-amber-400/50');
-                } else {
+                if (mode === 'solo') {
                     target.classList.add('border-cyan-400', 'ring-2', 'ring-cyan-400/50');
+                } else {
+                    target.classList.add('border-amber-400', 'ring-2', 'ring-amber-400/50');
                 }
             };
             btn.addEventListener('click', handler);
@@ -2277,7 +2279,7 @@
                 try { audio.init(); } catch (err) {}
                 audio.playClick();
                 document.querySelectorAll('.btn-diff').forEach(b => {
-                    b.classList.remove('ring-2', 'ring-amber-400', 'ring-amber-400/50', 'border-amber-400');
+                    b.classList.remove('ring-2', 'ring-amber-400/50', 'border-amber-400');
                     b.classList.add('border-slate-700');
                 });
                 const target = e.currentTarget;
@@ -2291,121 +2293,101 @@
             }, { passive: true });
         });
 
-        // Navigasi Layar Utama & Petunjuk
+        // Halaman Pembuka
         attachButtonListener('btn-play-now', () => { audio.playClick(); setScreen('mode-select'); });
         attachButtonListener('btn-open-guide', () => { audio.playClick(); setScreen('education'); });
+
+        // Halaman Petunjuk
         attachButtonListener('btn-close-guide', () => { audio.playClick(); voice.stop(); setScreen('splash'); });
         attachButtonListener('btn-guide-to-mode', () => { audio.playClick(); voice.stop(); setScreen('mode-select'); });
-        attachButtonListener('btn-close-mode-select', () => { audio.playClick(); setScreen('splash'); });
-        attachButtonListener('btn-mode-to-guide', () => { audio.playClick(); setScreen('education'); });
-
         attachButtonListener('btn-read-instructions', () => {
             audio.playClick();
-            voice.speak("Selamat datang! Gunakan telapak tanganmu di depan kamera atau sentuh layar untuk menangkap bangun datar. Perhatikan target misi di bagian atas layar dan tangkap bentuk yang sesuai. Hati-hati, salah tangkap akan mengurangi skor atau nyawa. Selamat bermain!", true);
+            voice.speak("Selamat datang! Gunakan telapak tanganmu di depan kamera atau sentuh layar untuk menangkap bangun datar seperti segitiga, segiempat, segilima, segienam, dan lingkaran. Perhatikan target misi di bagian atas layar dan tangkap bentuk yang sesuai. Hati-hati, salah tangkap akan mengurangi skor atau nyawa. Selamat bermain!", true);
         });
 
-        // Aktivasi Kamera & Kontrol
-        attachButtonListener('btn-start-camera', () => { audio.playClick(); initCameraActivation(); });
+        // Halaman Pilih Mode
+        attachButtonListener('btn-close-mode-select', () => { audio.playClick(); setScreen('splash'); });
+        attachButtonListener('btn-mode-to-guide', () => { audio.playClick(); setScreen('education'); });
+        attachButtonListener('btn-start-camera', () => { audio.playClick(); openCameraSetup(); });
         attachButtonListener('btn-start-mouse', () => { audio.playClick(); enableMouseFallback(); });
 
+        // Halaman Aktivasi Sensor Kamera
         attachButtonListener('btn-back-from-camera', () => {
             audio.playClick();
             stopCameraStream();
             setScreen('mode-select');
         });
-
         attachButtonListener('btn-retry-camera', () => {
             audio.playClick();
-            initCameraActivation();
+            stopCameraStream();
+            openCameraSetup();
         });
-
         attachButtonListener('btn-fallback-touch', () => {
             audio.playClick();
             enableMouseFallback();
         });
-
         attachButtonListener('btn-camera-to-touch', () => {
             audio.playClick();
             enableMouseFallback();
         });
-
         attachButtonListener('btn-confirm-start-game', () => {
-            if (!isCameraActive) return;
             audio.playClick();
+            state.isCameraSettingUp = false;
             state.useMouse = false;
-            const trackingText = document.getElementById('hud-tracking-text');
-            if (trackingText) {
-                trackingText.innerText = state.gameMode === 'battle'
-                    ? "Battle WebCam: Pemain 1 vs Pemain 2"
-                    : "Hand Tracking Aktif (Gunakan Tangan)";
-            }
             bootGameplay();
         });
 
-        // Kontrol Suara & Jeda (Solo & Battle)
-        const handleToggleSound = () => {
+        // Kontrol HUD & Pause
+        function toggleGameSound() {
             const isMuted = audio.toggleMute();
             const icon = isMuted ? '🔇' : '🔊';
-            const btnSolo = document.getElementById('btn-toggle-sound');
-            const btnBattle = document.getElementById('btn-battle-sound');
-            if (btnSolo) btnSolo.innerText = icon;
-            if (btnBattle) btnBattle.innerText = icon;
-        };
-        attachButtonListener('btn-toggle-sound', handleToggleSound);
-        attachButtonListener('btn-battle-sound', handleToggleSound);
+            document.getElementById('btn-toggle-sound').innerText = icon;
+            document.getElementById('btn-battle-sound').innerText = icon;
+        }
+        attachButtonListener('btn-toggle-sound', toggleGameSound);
+        attachButtonListener('btn-battle-sound', toggleGameSound);
 
-        const handlePauseGame = () => {
+        function pauseGame() {
             audio.playClick();
             voice.stop();
             state.isPaused = true;
-            const modal = document.getElementById('modal-pause');
-            if (modal) {
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-            }
-        };
-        attachButtonListener('btn-pause', handlePauseGame);
-        attachButtonListener('btn-battle-pause', handlePauseGame);
+            document.getElementById('modal-pause').classList.remove('hidden');
+            document.getElementById('modal-pause').classList.add('flex');
+        }
+        attachButtonListener('btn-pause', pauseGame);
+        attachButtonListener('btn-battle-pause', pauseGame);
 
         attachButtonListener('btn-resume', () => {
             audio.playClick();
             state.isPaused = false;
-            const modal = document.getElementById('modal-pause');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
+            document.getElementById('modal-pause').classList.add('hidden');
+            document.getElementById('modal-pause').classList.remove('flex');
         });
 
         attachButtonListener('btn-quit', () => {
             audio.playClick();
             voice.stop();
-            stopCameraStream();
             state.isPlaying = false;
-            updateBattleDeadOverlays();
             clearInterval(state.timerTimer);
             clearInterval(state.spawnTimer);
-            const modal = document.getElementById('modal-pause');
-            if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }
+            stopCameraStream();
+            document.getElementById('modal-pause').classList.add('hidden');
+            document.getElementById('modal-pause').classList.remove('flex');
             setScreen('splash');
         });
 
-        // Tombol Halaman Review (Solo & Battle)
-        attachButtonListener('btn-restart', () => { audio.playClick(); bootGameplay(); });
-        attachButtonListener('btn-battle-restart', () => { audio.playClick(); bootGameplay(); });
-
-        const handleExitGame = () => {
+        // Halaman Review & Keluar (Terima Kasih)
+        function goToExitScreen() {
             audio.playClick();
             stopCameraStream();
-            state.isPlaying = false;
             setScreen('exit');
-            try { window.close(); } catch (e) {}
-        };
-        attachButtonListener('btn-exit-solo', handleExitGame);
-        attachButtonListener('btn-battle-exit', handleExitGame);
+            voice.speak("Terima kasih sudah bermain! Sampai jumpa pada petualangan belajar bangun datar berikutnya.", true);
+        }
+
+        attachButtonListener('btn-restart', () => { audio.playClick(); bootGameplay(); });
+        attachButtonListener('btn-exit-solo', goToExitScreen);
+        attachButtonListener('btn-battle-restart', () => { audio.playClick(); bootGameplay(); });
+        attachButtonListener('btn-battle-exit', goToExitScreen);
 
         attachButtonListener('btn-reopen-app', () => {
             audio.playClick();
@@ -2413,7 +2395,7 @@
             setScreen('splash');
         });
 
-        // Start View
+        // Mulai di Halaman Pembuka
         setScreen('splash');
     </script>
 </body>
